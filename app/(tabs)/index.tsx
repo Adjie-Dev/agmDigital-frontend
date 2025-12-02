@@ -1,19 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { BackHandler, ScrollView, View } from 'react-native';
 import Navbar from '../../components/Navbar';
+import Avamaggala from './Avamangala';
 import Dashboard from './Dashboard';
 import HeroSection from './HeroSection';
 import Meditasi from './Meditasi';
-import Panduan from './Panduan';
 import PujapagiScreen from './PujaPagi';
 import Pujasore from './PujaSore';
+import TentangKami from './TentangKami';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>('Dashboard');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const scrollViewRef = useRef<ScrollView>(null);
 
-  // Auto scroll to top ketika activeSection berubah
+  // Auto scroll to top
   useEffect(() => {
     if (scrollViewRef.current) {
       scrollViewRef.current.scrollTo({ y: 0, animated: true });
@@ -48,8 +49,10 @@ const App: React.FC = () => {
         return <Pujasore />;
       case 'Meditasi':
         return <Meditasi />;
-        case 'Panduan':
-          return <Panduan setActiveSection={setActiveSection} />;
+      case 'Avamangala':
+        return <Avamaggala />
+      case 'TentangKami':
+          return <TentangKami setActiveSection={setActiveSection} />;
       default:
         return (
           <>

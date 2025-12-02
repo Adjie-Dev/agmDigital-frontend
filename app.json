@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "buddhayana-app",
-    "slug": "buddhayana-app",
+    "name": "agm-digital",
+    "slug": "agm-digital",
     "version": "1.0.4",
     "orientation": "portrait",
-    "icon": "./assets/images/buddhayana.png",
-    "scheme": "buddhayana-app",
+    "icon": "./assets/images/aggajinamito-digital.png",
+    "scheme": "agm-digital",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -16,29 +16,30 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/buddhayana.png",
+        "foregroundImage": "./assets/images/aggajinamito-digital.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": false,
-      "package": "com.wahyuaji.buddhayanaapp2",
+      "package": "com.wahyuaji.aggajinamitto",
       "runtimeVersion": "1.0.4"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/buddhayana.png"
+      "favicon": "./assets/images/aggajinamito-digital.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/buddhayana.png",
+          "image": "./assets/images/aggajinamito-digital.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true
@@ -52,5 +53,5 @@
     "updates": {
       "url": "https://u.expo.dev/d3d5d512-060d-412a-a131-a9297739bad7"
     }
-  },
+  }
 }

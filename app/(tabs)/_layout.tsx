@@ -19,7 +19,7 @@ export default function TabLayout() {
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: {
-          display: 'none', // Tambahkan ini untuk hide tab bar
+          display: 'none',
           ...Platform.select({
             ios: {
               position: 'absolute',
