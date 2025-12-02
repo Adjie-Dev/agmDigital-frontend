@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "agm-digital",
-    "slug": "agm-digital",
-    "version": "1.0.4",
+    "slug": "buddhayana-app",
+    "version": "1.5.0",
     "orientation": "portrait",
     "icon": "./assets/images/aggajinamito-digital.png",
     "scheme": "agm-digital",
@@ -21,7 +21,7 @@
       },
       "edgeToEdgeEnabled": false,
       "package": "com.wahyuaji.aggajinamitto",
-      "runtimeVersion": "1.0.4"
+      "runtimeVersion": "1.0.8"
     },
     "web": {
       "bundler": "metro",
