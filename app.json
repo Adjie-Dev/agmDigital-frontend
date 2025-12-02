@@ -21,7 +21,8 @@
       },
       "edgeToEdgeEnabled": false,
       "package": "com.wahyuaji.aggajinamitto",
-      "runtimeVersion": "1.0.8"
+      "runtimeVersion": "1.0.9",
+      "versionCode": 5
     },
     "web": {
       "bundler": "metro",
