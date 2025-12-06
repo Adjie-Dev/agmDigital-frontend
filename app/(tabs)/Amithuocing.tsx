@@ -1,4 +1,4 @@
-import { PathamaPuja } from '@/pujaData/PathamaPuja';
+import { Amithuocing } from '@/pujaData/Amithuocing';
 import React, { useState } from 'react';
 import {
     Dimensions,
@@ -12,8 +12,7 @@ import {
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import WebView from 'react-native-webview';
 
-
-const PathamaPujaPage = () => {
+const AmithuocingPage = () => {
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const [currentTrack, setCurrentTrack] = useState<number | null>(null);
     const [fontSize, setFontSize] = useState<number>(16);
@@ -63,7 +62,7 @@ const PathamaPujaPage = () => {
         {/* Header*/}
         <View className="bg-white shadow-md border-b-2 border-yellow-600 px-4 py-3">
             <View className="flex-row items-center justify-between mb-3">
-            <Text className="text-2xl font-bold text-yellow-700"><FontAwesome5 name="sun" size={20} color="#ca8a04" /> Pathama Puja </Text>
+            <Text className="text-2xl font-bold text-yellow-700"><FontAwesome5 name="sun" size={20} color="#ca8a04" /> Puja Pagi</Text>
             </View>
 
             <View className="flex-row items-center justify-center bg-yellow-100 px-3 py-2 rounded-full border border-yellow-300">
@@ -78,7 +77,7 @@ const PathamaPujaPage = () => {
             <View className="bg-red-800 p-4 rounded-t-xl">
                 <View className="flex-row items-center">
                 <FontAwesome5 name="youtube" size={20} color="white" style={{ marginRight: 8 }} />
-                <Text className="text-white font-semibold text-base">Video Panduan Paritta Avamangala</Text>
+                <Text className="text-white font-semibold text-base">Video Panduan Puja Pagi</Text>
                 </View>
             </View>
             <View className="p-4 bg-amber-50">
@@ -97,14 +96,10 @@ const PathamaPujaPage = () => {
             {/* Persiapan Section */}
             <View className="flex-row mx-4 mb-4 space-x-4">
             <View className="flex-1 bg-white p-4 rounded-xl shadow-md border-2 border-yellow-400 items-center">
-                <Text className="text-3xl font-bold text-yellow-600">Persiapan Puja Bakti</Text>
-                <Text className="text-yellow-700 text-sm font-semibold">• Bersihkan altar & ruang puja.</Text>
-                <Text className="text-yellow-700 text-sm font-semibold">• Siapkan patung/ gambar Buddha.</Text>
-                <Text className="text-yellow-700 text-sm font-semibold">• Nyalakan lilin & dupa (opsional).</Text>
-                <Text className="text-yellow-700 text-sm font-semibold">• Mandi/bersih-bersih.</Text>
-                <Text className="text-yellow-700 text-sm font-semibold">• Kenakan pakaian rapi/sopan.</Text>
-                <Text className="text-yellow-700 text-sm font-semibold">• Tenangkan pikiran beberapa menit sebelum mulai.</Text>
-
+                <Text className="text-3xl font-bold text-yellow-600">Persiapan</Text>
+                <Text className="text-yellow-700 text-sm font-semibold">• Duduk dengan posisi nyaman (bersila atau di kursi)</Text>
+                <Text className="text-yellow-700 text-sm font-semibold">• Tenangkan pikiran beberapa detik</Text>
+                <Text className="text-yellow-700 text-sm font-semibold">• Nyalakan lilin dandupa (opsional)</Text>
             </View>
             </View>
 
@@ -134,7 +129,7 @@ const PathamaPujaPage = () => {
                     <Text className="text-yellow-800 text-xs font-medium">{getFontSizeLabel()}</Text>
                     </View>
                 </View>
-
+                
                 <View className="flex-row items-center justify-between bg-white p-3 rounded-lg border-2 border-yellow-300">
                     <TouchableOpacity
                     onPress={() => adjustFontSize(false)}
@@ -211,7 +206,7 @@ const PathamaPujaPage = () => {
             </View>
 
             {/* Puja Sections */}
-            {PathamaPuja.map((section, index) => (
+            {Amithuocing.map((section, index) => (
             <View key={index} className="mx-4 mb-4 bg-white rounded-xl shadow-md border-2 border-yellow-300">
                 {/* Section Header */}
                 <View className="bg-red-900 p-4 rounded-t-xl">
@@ -295,7 +290,7 @@ const PathamaPujaPage = () => {
                 <View className="mb-4">
                 <View className="flex-row items-center mb-3">
                     <FontAwesome5 name="book" size={16} color="#854d0e" style={{ marginRight: 8 }} />
-                    <Text className="text-yellow-800 font-bold">Teks Pali</Text>
+                    <Text className="text-yellow-800 font-bold">Teks Mandarin</Text>
                 </View>
                 <View className="bg-white p-4 rounded-lg border-2 border-yellow-200">
                     {section.paliText.split('\n').map((line, lineIndex) => {
@@ -397,9 +392,9 @@ const PathamaPujaPage = () => {
             {/* Footer */}
             <View className="mx-4 mb-6 bg-white p-6 rounded-xl shadow-md border-2 border-yellow-300">
             <View className="items-center">
-                <Text className="text-xl font-bold text-yellow-800 mb-2">Selesaikan Paritta Avamangala</Text>
+                <Text className="text-xl font-bold text-yellow-800 mb-2">Selesaikan Puja Pagi</Text>
                 <Text className="text-yellow-700 text-center mb-4 leading-6">
-                Avamangala Sutta adalah paritta pendek yang digunakan untuk menghalau nasib buruk, membersihkan batin, serta memunculkan perlindungan melalui kualitas Dhamma. Biasanya dibacakan setelah Namakkāra atau sebelum paritta lain.
+                Setelah menyelesaikan semua bagian puja, dedikasikan merit untuk semua makhluk hidup.
                 </Text>
                 <View className="bg-yellow-100 p-4 rounded-lg border-2 border-yellow-400">
                 <Text className="text-yellow-900 italic text-center font-bold text-base">
@@ -416,4 +411,4 @@ const PathamaPujaPage = () => {
     );
 };
 
-export default PathamaPujaPage;
+export default AmithuocingPage;

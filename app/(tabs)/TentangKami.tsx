@@ -152,7 +152,7 @@ const TentangKami = ({ setActiveSection }: TentangKamiProps) => {
               {[
                 { 
                   title: 'Wihara Tantular Sugata Wilwatikta',
-                  icon: 'spa'
+                  icon: 'vihara'
                 },
                 { 
                   title: 'Lembaga Pendidikan Pariyapunati Indonesia',
@@ -160,15 +160,15 @@ const TentangKami = ({ setActiveSection }: TentangKamiProps) => {
                 },
                 { 
                   title: 'Padepokan Meditasi Buddhayana, Lorokan',
-                  icon: 'spa'
+                  icon: 'tree'
                 },
                 { 
                   title: 'Buddhayana Center Bali',
-                  icon: 'spa'
+                  icon: 'vihara'
                 },
                 { 
                   title: 'Cetiya Amitabha, Bali',
-                  icon: 'spa'
+                  icon: 'vihara'
                 },
                 { 
                   title: 'Padepokan Sumberejo',

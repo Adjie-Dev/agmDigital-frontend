@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { Animated, Dimensions, Image, Modal, StatusBar, Text, TouchableOpacity, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, Dimensions, Image, Modal, ScrollView, StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
@@ -22,14 +22,27 @@ const Navbar: React.FC<NavbarProps> = ({
     const slideAnim = useRef(new Animated.Value(SIDEBAR_WIDTH)).current;
     const opacityAnim = useRef(new Animated.Value(0)).current;
     const insets = useSafeAreaInsets();
+    
+    const [isPujaExpanded, setIsPujaExpanded] = useState(false);
 
     const navItems = [
         { id: 'Dashboard', label: 'Beranda', icon: 'home', color: 'yellow' },
-        { id: 'PujaPagi', label: 'Puja Pagi', icon: 'sun', color: 'yellow' },
-        { id: 'PujaSore', label: 'Puja Petang', icon: 'cloud-sun', color: 'orange' },
+        { 
+            id: 'PujaGroup', 
+            label: 'Puja & Paritta', 
+            icon: 'book', 
+            color: 'yellow',
+            isGroup: true,
+            submenu: [
+                { id: 'PujaPagi', label: 'Puja Pagi', icon: 'sun' },
+                { id: 'PujaSore', label: 'Puja Petang', icon: 'cloud-sun' },
+                { id: 'Avamangala', label: 'Paritta Avamangala', icon: 'book' },
+                { id: 'PathamaPuja', label: 'Pathama Puja', icon: 'book-open' },
+                { id: 'Amithuocing', label: 'Amithuocing', icon: 'book-reader' },
+            ]
+        },
         { id: 'Meditasi', label: 'Meditasi Satipathana', icon: 'spa', color: 'red' },
-        { id: 'Avamangala', label: 'Paritta Avamangala', icon: 'book', color: 'yellow' },
-        { id: 'PathamaPuja', label: 'Pathama Puja', icon: 'book-open', color: 'yellow' },
+        { id: 'Article', label: 'Artikel Dharma', icon: 'newspaper', color: 'red' },
         { id: 'TentangKami', label: 'Tentang Kami', icon: 'info-circle', color: 'yellow' },
     ];
 
@@ -63,9 +76,13 @@ const Navbar: React.FC<NavbarProps> = ({
         }
     }, [isMobileMenuOpen, slideAnim, opacityAnim]);
 
-    const handleMenuItemPress = (sectionId: string) => {
-        setActiveSection(sectionId);
-        setIsMobileMenuOpen(false);
+    const handleMenuItemPress = (sectionId: string, isGroup?: boolean) => {
+        if (isGroup) {
+            setIsPujaExpanded(!isPujaExpanded);
+        } else {
+            setActiveSection(sectionId);
+            setIsMobileMenuOpen(false);
+        }
     };
 
     const getItemColors = (itemId: string, color: string) => {
@@ -85,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 icon: isActive ? '#7f1d1d' : '#6b7280',
                 border: isActive ? 'border-red-300' : ''
             };
-        } else { // orange
+        } else {
             return {
                 bg: isActive ? 'bg-orange-50' : '',
                 text: isActive ? 'text-orange-700' : 'text-gray-700',
@@ -97,10 +114,8 @@ const Navbar: React.FC<NavbarProps> = ({
 
     return (
         <>
-            {/* Status Bar Configuration */}
             <StatusBar backgroundColor="#ffffff" barStyle="dark-content" />
             
-            {/* Header */}
             <View 
                 className="bg-white shadow-lg relative z-10 border-b-2 border-yellow-400" 
                 style={{ 
@@ -113,13 +128,11 @@ const Navbar: React.FC<NavbarProps> = ({
                 }}
             >
                 <View className="flex-row items-center justify-between px-4 py-3">
-                    {/* Logo */}
                     <Image
                         source={require('../assets/images/logowihara.png')}
                         style={{ width: 73, height: 42, marginLeft: 8, top: 2 }}
                     />
 
-                    {/* Hamburger Menu Button */}
                     <TouchableOpacity
                         onPress={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         className="p-2 rounded-lg bg-yellow-50"
@@ -135,7 +148,6 @@ const Navbar: React.FC<NavbarProps> = ({
                 </View>
             </View>
 
-            {/* Sidebar Modal */}
             <Modal
                 animationType="none"
                 transparent={true}
@@ -144,7 +156,6 @@ const Navbar: React.FC<NavbarProps> = ({
                 statusBarTranslucent={true}
             >
                 <View className="flex-1">
-                    {/* Overlay */}
                     <Animated.View 
                         className="flex-1 bg-black"
                         style={{ 
@@ -161,7 +172,6 @@ const Navbar: React.FC<NavbarProps> = ({
                         />
                     </Animated.View>
 
-                    {/* Sidebar */}
                     <Animated.View
                         className="bg-amber-50 border-l-4 border-yellow-600 absolute right-0 top-0 bottom-0"
                         style={{
@@ -170,7 +180,6 @@ const Navbar: React.FC<NavbarProps> = ({
                             paddingTop: 20
                         }}
                     >
-                        {/* Sidebar Header */}
                         <View className="px-4 py-6 border-b-2 border-yellow-400 bg-white">
                             <View className="flex-row items-center justify-between">
                                 <View className="flex-row items-center flex-1">
@@ -179,7 +188,7 @@ const Navbar: React.FC<NavbarProps> = ({
                                         style={{ width: 73, height: 42, marginLeft: 8, top: 2 }}
                                     />
                                 </View>
-                                <TouchableOpacity 
+                                <TouchableOpacity
                                     onPress={() => setIsMobileMenuOpen(false)}
                                     className="p-2 bg-yellow-100 rounded-full"
                                 >
@@ -188,46 +197,51 @@ const Navbar: React.FC<NavbarProps> = ({
                             </View>
                         </View>
 
-                        {/* Navigation Items */}
-                        <View className="pt-4 px-2">
+                        <ScrollView className="flex-1 pt-4 px-2" showsVerticalScrollIndicator={false}>
                             {navItems.map((item) => {
                                 const colors = getItemColors(item.id, item.color);
                                 const isActive = activeSection === item.id;
                                 
                                 return (
-                                    <TouchableOpacity
-                                        key={item.id}
-                                        onPress={() => handleMenuItemPress(item.id)}
-                                        className={`flex-row items-center px-4 py-4 mx-2 rounded-xl mb-2 ${colors.bg} ${
-                                            isActive ? `border-2 ${colors.border}` : 'border border-transparent'
-                                        }`}
-                                        activeOpacity={0.7}
-                                        style={{
-                                            backgroundColor: isActive ? undefined : '#ffffff'
-                                        }}
-                                    >
-                                        <View className={`p-2 rounded-full ${
-                                            isActive 
-                                                ? item.color === 'yellow' 
-                                                    ? 'bg-yellow-200' 
-                                                    : item.color === 'red'
-                                                    ? 'bg-red-200'
-                                                    : 'bg-orange-200'
-                                                : 'bg-gray-100'
-                                        }`}>
-                                            <FontAwesome5
-                                                name={item.icon}
-                                                size={20}
-                                                color={colors.icon}
-                                            />
-                                        </View>
-                                        <Text 
-                                            className={`ml-4 text-base font-semibold ${colors.text}`}
+                                    <View key={item.id}>
+                                        <TouchableOpacity
+                                            onPress={() => handleMenuItemPress(item.id, item.isGroup)}
+                                            className={`flex-row items-center px-4 py-4 mx-2 rounded-xl mb-2 ${colors.bg} ${
+                                                isActive ? `border-2 ${colors.border}` : 'border border-transparent'
+                                            }`}
+                                            activeOpacity={0.7}
+                                            style={{
+                                                backgroundColor: isActive ? undefined : '#ffffff'
+                                            }}
                                         >
-                                            {item.label}
-                                        </Text>
-                                        {isActive && (
-                                            <View className="ml-auto">
+                                            <View className={`p-2 rounded-full ${
+                                                isActive 
+                                                    ? item.color === 'yellow' 
+                                                        ? 'bg-yellow-200' 
+                                                        : item.color === 'red'
+                                                        ? 'bg-red-200'
+                                                        : 'bg-orange-200'
+                                                    : 'bg-gray-100'
+                                            }`}>
+                                                <FontAwesome5
+                                                    name={item.icon}
+                                                    size={20}
+                                                    color={colors.icon}
+                                                />
+                                            </View>
+                                            <Text 
+                                                className={`ml-4 text-base font-semibold ${colors.text} flex-1`}
+                                            >
+                                                {item.label}
+                                            </Text>
+                                            
+                                            {item.isGroup ? (
+                                                <FontAwesome5
+                                                    name={isPujaExpanded ? 'chevron-up' : 'chevron-down'}
+                                                    size={16}
+                                                    color={colors.icon}
+                                                />
+                                            ) : isActive && (
                                                 <View className={`w-2 h-2 rounded-full ${
                                                     item.color === 'yellow' 
                                                         ? 'bg-yellow-600' 
@@ -235,14 +249,52 @@ const Navbar: React.FC<NavbarProps> = ({
                                                         ? 'bg-red-800'
                                                         : 'bg-orange-600'
                                                 }`} />
+                                            )}
+                                        </TouchableOpacity>
+
+                                        {item.isGroup && isPujaExpanded && (
+                                            <View className="ml-4 mr-2 mb-2">
+                                                {item.submenu?.map((subitem) => {
+                                                    const isSubActive = activeSection === subitem.id;
+                                                    return (
+                                                        <TouchableOpacity
+                                                            key={subitem.id}
+                                                            onPress={() => handleMenuItemPress(subitem.id)}
+                                                            className={`flex-row items-center px-4 py-3 rounded-lg mb-1 ${
+                                                                isSubActive 
+                                                                    ? 'bg-yellow-100 border-l-4 border-yellow-500'
+                                                                    : 'bg-white border-l-4 border-gray-200'
+                                                            }`}
+                                                            activeOpacity={0.7}
+                                                        >
+                                                            <FontAwesome5
+                                                                name={subitem.icon}
+                                                                size={16}
+                                                                color={isSubActive ? '#854d0e' : '#9ca3af'}
+                                                                style={{ marginRight: 12 }}
+                                                            />
+                                                            <Text 
+                                                                className={`text-sm font-medium flex-1 ${
+                                                                    isSubActive ? 'text-yellow-700' : 'text-gray-600'
+                                                                }`}
+                                                            >
+                                                                {subitem.label}
+                                                            </Text>
+                                                            {isSubActive && (
+                                                                <View className="w-2 h-2 rounded-full bg-yellow-600" />
+                                                            )}
+                                                        </TouchableOpacity>
+                                                    );
+                                                })}
                                             </View>
                                         )}
-                                    </TouchableOpacity>
+                                    </View>
                                 );
                             })}
-                        </View>
+                            
+                            <View style={{ height: 120 }} />
+                        </ScrollView>
 
-                        {/* Info section */}
                         <View className="absolute bottom-8 left-0 right-0 px-4">
                             <View className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-xl p-4 border-2 border-yellow-300">
                                 <View className="flex-row items-center justify-center mb-2">

@@ -21,8 +21,8 @@ const Dashboard = ({ setActiveSection }: DashboardProps) => {
       section: 'PujaPagi'
     },
     {
-      title: 'Puja Sore',
-      description: 'Tutup hari dengan puja sore untuk refleksi dan syukur',
+      title: 'Puja Petang',
+      description: 'Tutup hari dengan puja petang untuk refleksi dan syukur',
       time: '15:00 - 17:00 WIB',
       icon: 'cloud-sun',
       color: 'bg-orange-500',
@@ -44,9 +44,30 @@ const Dashboard = ({ setActiveSection }: DashboardProps) => {
     },
   ];
 
+  const article = [
+    {
+      title: 'Artikel Dharma Terbaru',
+      description: 'Artikel Dharma yang menambah wawasan dan pengetahuan',
+      time: 'Artikel Dharma Terbaru',
+      icon: 'book',
+      color: 'bg-amber-700',
+      borderColor: 'border-red-300',
+      bgLight: 'bg-amber-50',
+      textColor: 'text-red-900',
+      section: 'Article'
+    }
+  ]
+
   const handleNavigateToSection = (section: string) => {
     setActiveSection(section);
   };
+
+  // const handleNavigateToWebsite = (url: string) => {
+  //   Linking.openURL(url).catch(err => {
+  //     console.error("Failed to open URL:", err);
+  //     Alert.alert("Error", "Tidak dapat membuka link");
+  //   });
+  // };
 
   const images = {
     bhanteSila: require('../../assets/images/bhante-nyanasila-thera.jpg')
@@ -66,7 +87,7 @@ const Dashboard = ({ setActiveSection }: DashboardProps) => {
             Aggajinamitto Digital
           </Text> */}
           <Text className="text-white text-center text-base leading-6 max-w-md">
-          𝐏𝐥𝐚𝐭𝐟𝐨𝐦 𝐞𝐝𝐮𝐤𝐚𝐬𝐢 𝐁𝐮𝐝𝐝𝐡𝐢𝐬 𝐝𝐚𝐧 𝐩𝐫𝐚𝐤𝐭𝐢𝐤 𝐥𝐚𝐭𝐢𝐡𝐚𝐧 𝐃𝐡𝐚𝐫𝐦𝐚 𝐡𝐚𝐫𝐢𝐚𝐧 𝐮𝐧𝐭𝐮𝐤 𝐒𝐚𝐧𝐠𝐡𝐚 𝐝𝐚𝐧 𝐔𝐦𝐚𝐭 𝐁𝐮𝐝𝐝𝐡𝐚.
+            𝐏𝐥𝐚𝐭𝐟𝐨𝐦 𝐞𝐝𝐮𝐤𝐚𝐬𝐢 𝐁𝐮𝐝𝐝𝐡𝐢𝐬 𝐝𝐚𝐧 𝐩𝐫𝐚𝐤𝐭𝐢𝐤 𝐥𝐚𝐭𝐢𝐡𝐚𝐧 𝐃𝐡𝐚𝐫𝐦𝐚 𝐡𝐚𝐫𝐢𝐚𝐧 𝐮𝐧𝐭𝐮𝐤 𝐒𝐚𝐧𝐠𝐡𝐚 𝐝𝐚𝐧 𝐔𝐦𝐚𝐭 𝐁𝐮𝐝𝐝𝐡𝐚.
           </Text>
         </View>
       </View>
@@ -131,6 +152,48 @@ const Dashboard = ({ setActiveSection }: DashboardProps) => {
             </TouchableOpacity>
           ))}
         </View>
+
+        {/* Article Section */}
+        <View className="mb-6">
+          <View className="flex-row items-center justify-between mb-4">
+            <Text className="text-2xl font-bold text-yellow-800">Artikel</Text>
+            <View className="bg-yellow-200 px-3 py-1 rounded-full">
+            </View>
+          </View>
+
+          {article.map((article, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => handleNavigateToSection(article.section)}
+              className={`bg-white rounded-xl shadow-md border-2 ${article.borderColor} mb-4 overflow-hidden`}
+              activeOpacity={0.7}
+            >
+              {/* Header */}
+            <View className={`${article.color} p-4 flex-row items-center justify-between`}>
+              <View className="flex-row items-center flex-1">
+                <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }} className="p-3 rounded-full mr-3">
+                  <FontAwesome5 name={article.icon} size={20} color="#ffffff" />
+                </View>
+                <View className="flex-1">
+                  <Text className="text-white font-bold text-lg">{article.title}</Text>
+                  <View className="flex-row items-center mt-1">
+                    <FontAwesome5 name="globe" size={10} color="#ffffff" style={{ opacity: 0.8 }} />
+                    <Text className="text-white text-xs ml-1 opacity-90">{article.time}</Text>
+                  </View>
+                </View>
+              </View>
+              <FontAwesome5 name="chevron-right" size={18} color="#ffffff" />
+          </View>
+
+      {/* Content */}
+      <View className={`${article.bgLight} p-4`}>
+        <Text className={`${article.textColor} leading-5`}>
+          {article.description}
+        </Text>
+      </View>
+    </TouchableOpacity>
+  ))}
+</View>
 
         {/* Info Cards */}
         <View className="mb-6">

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { BackHandler, ScrollView, View } from 'react-native';
 import Navbar from '../../components/Navbar';
+import Amithuocing from './Amithuocing';
+import Article from './Article';
 import Avamaggala from './Avamangala';
 import Dashboard from './Dashboard';
 import HeroSection from './HeroSection';
@@ -52,8 +54,12 @@ const App: React.FC = () => {
         return <Meditasi />;
       case 'Avamangala':
         return <Avamaggala />
-        case 'PathamaPuja':
+      case 'PathamaPuja':
         return <PathamaPuja />
+      case 'Amithuocing':
+        return <Amithuocing />
+      case 'Article':
+        return <Article />
       case 'TentangKami':
           return <TentangKami setActiveSection={setActiveSection} />;
       default:
@@ -68,7 +74,7 @@ const App: React.FC = () => {
 
   return (
     <View className="flex-1 bg-white">
-      {/* Fixed Navbar - PINDAH KE LUAR ScrollView */}
+      {/* Fixed Navbar */}
       <Navbar
         activeSection={activeSection}
         isMobileMenuOpen={isMobileMenuOpen}
@@ -76,7 +82,7 @@ const App: React.FC = () => {
         setActiveSection={setActiveSection}
       />
 
-      {/* Scrollable Content - Navbar sekarang FIXED di atas */}
+      {/* Scrollable Content */}
       <ScrollView
         ref={scrollViewRef}
         className="flex-1 bg-gray-50"

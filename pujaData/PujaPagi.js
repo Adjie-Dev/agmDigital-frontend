@@ -66,8 +66,7 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • yo dhammaṁ desesi ādikalyāṇaṁ
 majjhekalyāṇaṁ pariyosānakalyāṇaṁ, 
 • sātthaṁ sabyañjanaṁ kevalaparipuṇṇaṁ parisuddhaṁ brahmacariyaṁ pakāsesi, 
-• tamahaṁ bhagavantaṁ abhipūjayāmi tamahaṁ bhagavantaṁ sirasā
-namāmi.`,
+• tamahaṁ bhagavantaṁ abhipūjayāmi tamahaṁ bhagavantaṁ sirasā namāmi.`,
                 translation: `• Beliau Sang Tathāgata, Yang Maha Suci,
 • yang telah mencapai penerangan sempurna, 
 • sempurna pengetahuan serta tindak tandukNya, 

@@ -288,54 +288,104 @@ const PujaSoreComponent = () => {
                             </View>
 
                             {/* Pali Text */}
+                            {/* Pali Text */}
                             <View className="mb-4">
-                                <View className="flex-row items-center mb-3">
-                                    <FontAwesome5 name="book" size={16} color="#854d0e" style={{ marginRight: 8 }} />
-                                    <Text className="text-yellow-800 font-bold">Teks Pali</Text>
-                                </View>
-                                <View className="bg-white p-4 rounded-lg border-2 border-yellow-200">
-                                    {section.paliText.split('\n').map((line, lineIndex) => (
-                                        <Text
-                                            key={lineIndex}
-                                            className="text-yellow-900 mb-1"
-                                            style={{
-                                                fontSize: fontSize,
-                                                lineHeight: fontSize * 1.6,
-                                                fontFamily: 'serif',
-                                                textAlign: 'justify',
-                                                marginBottom: line.trim() === '' ? 8 : 2,
-                                            }}
-                                        >
-                                            {line.trim() === '' ? ' ' : line}
-                                        </Text>
-                                    ))}
-                                </View>
+                            <View className="flex-row items-center mb-3">
+                                <FontAwesome5 name="book" size={16} color="#854d0e" style={{ marginRight: 8 }} />
+                                <Text className="text-yellow-800 font-bold">Teks Pali</Text>
+                            </View>
+                            <View className="bg-white p-4 rounded-lg border-2 border-yellow-200">
+                                {section.paliText.split('\n').map((line, lineIndex) => {
+                                const trimmedLine = line.trim();
+                                
+                                // Skip empty lines
+                                if (trimmedLine === '') {
+                                    return <View key={lineIndex} style={{ height: 12 }} />;
+                                }
+                                
+                                // Remove existing bullet if present
+                                const textContent = trimmedLine.startsWith('•') 
+                                    ? trimmedLine.substring(1).trim() 
+                                    : trimmedLine;
+                                
+                                return (
+                                    <View key={lineIndex} className="flex-row mb-2" style={{ paddingLeft: 4 }}>
+                                    <Text
+                                        className="text-yellow-900"
+                                        style={{
+                                        fontSize: fontSize,
+                                        lineHeight: fontSize * 1.6,
+                                        fontFamily: 'serif',
+                                        fontWeight: 'bold',
+                                        marginRight: 8,
+                                        }}
+                                    >
+                                        •
+                                    </Text>
+                                    <Text
+                                        className="text-yellow-900 flex-1"
+                                        style={{
+                                        fontSize: fontSize,
+                                        lineHeight: fontSize * 1.6,
+                                        fontFamily: 'serif',
+                                        }}
+                                    >
+                                        {textContent}
+                                    </Text>
+                                    </View>
+                                );
+                                })}
+                            </View>
                             </View>
 
                             {/* Translation */}
                             {isSectionTranslationVisible(index) && (
-                                <View>
-                                    <View className="flex-row items-center mb-3">
-                                        <FontAwesome5 name="language" size={16} color="#7f1d1d" style={{ marginRight: 8 }} />
-                                        <Text className="text-red-900 font-bold">Terjemahan</Text>
-                                    </View>
-                                    <View className="bg-red-50 p-4 rounded-lg border-2 border-red-200">
-                                        {section.translation.split('\n').map((line, lineIndex) => (
-                                            <Text
-                                                key={lineIndex}
-                                                className="text-red-900 mb-1"
-                                                style={{
-                                                    fontSize: fontSize - 1,
-                                                    lineHeight: (fontSize - 1) * 1.5,
-                                                    textAlign: 'justify',
-                                                    marginBottom: line.trim() === '' ? 8 : 2,
-                                                }}
-                                            >
-                                                {line.trim() === '' ? ' ' : line}
-                                            </Text>
-                                        ))}
-                                    </View>
+                            <View>
+                                <View className="flex-row items-center mb-3">
+                                <FontAwesome5 name="language" size={16} color="#7f1d1d" style={{ marginRight: 8 }} />
+                                <Text className="text-red-900 font-bold">Terjemahan</Text>
                                 </View>
+                                <View className="bg-red-50 p-4 rounded-lg border-2 border-red-200">
+                                {section.translation.split('\n').map((line, lineIndex) => {
+                                    const trimmedLine = line.trim();
+                                    
+                                    // Skip empty lines
+                                    if (trimmedLine === '') {
+                                    return <View key={lineIndex} style={{ height: 12 }} />;
+                                    }
+                                    
+                                    // Remove existing bullet if present
+                                    const textContent = trimmedLine.startsWith('•') 
+                                    ? trimmedLine.substring(1).trim() 
+                                    : trimmedLine;
+                                    
+                                    return (
+                                    <View key={lineIndex} className="flex-row mb-2" style={{ paddingLeft: 4 }}>
+                                        <Text
+                                        className="text-red-900"
+                                        style={{
+                                            fontSize: fontSize - 1,
+                                            lineHeight: (fontSize - 1) * 1.5,
+                                            fontWeight: 'bold',
+                                            marginRight: 8,
+                                        }}
+                                        >
+                                        •
+                                        </Text>
+                                        <Text
+                                        className="text-red-900 flex-1"
+                                        style={{
+                                            fontSize: fontSize - 1,
+                                            lineHeight: (fontSize - 1) * 1.5,
+                                        }}
+                                        >
+                                        {textContent}
+                                        </Text>
+                                    </View>
+                                    );
+                                })}
+                                </View>
+                            </View>
                             )}
                         </View>
                     </View>

@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const PathamaPuja = () => {
+const NotFound = () => {
     return (
         <SafeAreaView className="flex-1 bg-amber-50">
             <StatusBar barStyle="dark-content" backgroundColor="#FFF8E7" />
@@ -10,7 +10,7 @@ const PathamaPuja = () => {
             {/* Header */}
             <View className="bg-white shadow-md border-b-2 border-yellow-600 px-4 py-3">
                 <View className="flex-row items-center justify-between mb-3">
-                    <Text className="text-2xl font-bold text-yellow-700">📖 PathamaPuja</Text>
+                    <Text className="text-2xl font-bold text-yellow-700">HELLO</Text>
                 </View>
 
                 <View className="flex-row items-center justify-center bg-yellow-100 px-3 py-2 rounded-full border border-yellow-300">
@@ -63,4 +63,4 @@ const PathamaPuja = () => {
     );
 }
 
-export default PathamaPuja;
+export default NotFound;
