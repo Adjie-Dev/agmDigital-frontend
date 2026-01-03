@@ -107,6 +107,7 @@ const AmithuocingPage = () => {
         <View className="bg-white shadow-md border-b-2 border-yellow-600 px-4 py-3">
             <View className="flex-row items-center justify-between mb-3">
             <Text className="text-2xl font-bold text-yellow-700"><FontAwesome5 name="sun" size={20} color="#ca8a04" /> Amitabha Sutra</Text>
+            <Text className="text-2xl font-bold text-yellow-700"><FontAwesome5 name="sun" size={20} color="#ca8a04" /> Amitabha Sutra</Text>
             </View>
 
             <View className="flex-row items-center justify-center bg-yellow-100 px-3 py-2 rounded-full border border-yellow-300">
@@ -303,6 +304,7 @@ const AmithuocingPage = () => {
                     }}
                 >
                     Fó Shuō A Mi Tuó JĪng
+                    Fó Shuō A Mi Tuó JĪng
                 </Text>
                 </View>
             </View>
@@ -496,7 +498,9 @@ const AmithuocingPage = () => {
             <View className="mx-4 mb-6 bg-white p-6 rounded-xl shadow-md border-2 border-yellow-300">
             <View className="items-center">
                 <Text className="text-xl font-bold text-yellow-800 mb-2">Selesaikan Amitabha Sutra</Text>
+                <Text className="text-xl font-bold text-yellow-800 mb-2">Selesaikan Amitabha Sutra</Text>
                 <Text className="text-yellow-700 text-center mb-4 leading-6">
+                Setelah menyelesaikan semua bagian sutra, dedikasikan merit untuk semua makhluk hidup.
                 Setelah menyelesaikan semua bagian sutra, dedikasikan merit untuk semua makhluk hidup.
                 </Text>
                 <View className="bg-yellow-100 p-4 rounded-lg border-2 border-yellow-400">
