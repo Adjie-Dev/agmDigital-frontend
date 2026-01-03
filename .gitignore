@@ -37,3 +37,7 @@ yarn-error.*
 *.tsbuildinfo
 
 app-example
+
+# Video dan Audio
+assets/videos/
+*.mp4
