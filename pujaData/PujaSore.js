@@ -3,7 +3,7 @@ export const PujaSore = [
                 title: 'Penghormatan',
                 duration: '1:00',
                 description: 'Penghormatan kepada Tiratana (Buddha, Dhamma, Sangha)',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/penghormatan.mp3'),
                 paliText: `Yo so bhagavā arahaṁ sammāsambuddho
 Imehi sakkārehi
 Taṁ bhagavantaṁ abhipūjayāmi.
@@ -25,7 +25,7 @@ Demikianlah Saṅgha Siswa Sang Bhagavā telah bertindak sempurna Dengan penghor
                 title: 'Namakāra Gāthā',
                 duration: '2:00',
                 description: 'Penghormatan kepada Tiratana',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/namakara-gatha.mp3'),
                 paliText: `Arahaṁ sammāsambuddho bhagavā
 Buddhaṁ bhagavantaṁ abhivādemi. (namakāra)
 
@@ -45,10 +45,8 @@ Aku bersujud di hadapan Saṅgha. (namakāra)`
                 title: 'Pūja Gāthā',
                 duration: '3:15',
                 description: 'Persiapan puja dan penghormatan awal',
-                audioUrl: '#',
-                paliText: `Yamamha kho mayaṁ bhagavantaṁ saranaṁ
-gatā, (uddissa pabbajitā)¹
-, yo no bhagavā satthā,
+                audioUrl: require('@/assets/audio/puja-gatha.mp3'),
+                paliText: `Yamamha kho mayaṁ bhagavantaṁ saranaṁ gatā, (uddissa pabbajitā)¹ , yo no bhagavā satthā,
 yassa ca mayaṁ bhagavato dhammaṁ rocema,
 imehi sakkārehi taṁ bhagavantaṁ sasadhammaṁ
 sasāvakasaṅghaṁ abhipūjayāma`,
@@ -62,7 +60,7 @@ Saṅgha.`
                 title: 'Pubbabhāganamakāra Buddhānussati',
                 duration: '3:30',
                 description: 'Penghormatan awal dan perenungan terhadap Buddha',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/pubbabhāganamakāraBuddhānussati.mp3'),
                 paliText: `Namo Sanghyang Ādi Buddhāya (3X)
 Namo Tassa Bhagavato Arahato Sammāsambuddhassa (3X)
 Namo Sabbe Bodhisattāya-Mahasattāya (3X)
@@ -82,7 +80,7 @@ Berita nan luhur tentang kemasyhuran Sang Bhagavā yang bijak telah menyebar lua
                 title: 'Buddhābhīgitiṁ',
                 duration: '3:30',
                 description: 'Penghormatan terhadap Buddha',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/buddhabighitim.mp3'),
                 paliText: `Handa mayaṁ buddhābhīgitiṁ karoma se
 
 Buddhvārahantavaratādiguṇābhiyutto
@@ -109,6 +107,8 @@ Buddhaṁ me vandamānena (wanita: vandamānāya)
 Yaṁ puññaṁ pasutaṁ idha
 Sabbepi antarāyā me
 Māhesuṁ tassa tejasā
+
+
 (bernamakāra sambil membacakan)
 Kāyena vācāya va cetasā vā
 Buddhe kukammaṁ pakataṁ mayā yaṁ
@@ -142,6 +142,8 @@ Segala kebajikan yang dilakukan di sini
 Dengan memberi penghormatan kepada Sang Buddha
 Semoga dengan kekuatan ini
 Segala rintangan ku lenyap
+
+
 (bernamakāra sambil membacakan)
 Segala perbuatan buruk yang kulakukan kepada Sang
 Buddha
@@ -154,7 +156,7 @@ kepada Sang Buddha.`
                 title: 'Dhammānussati',
                 duration: '2:00',
                 description: 'Perenungan terhadap Dhamma',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/dhammanusati.mp3'),
                 paliText: `Svākkhāto bhagavatā dhammo,
 Sandiṭṭhiko akāliko ehipassiko,
 Opanayiko paccattaṁ veditabbo viññūhī 'ti.`,
@@ -164,7 +166,7 @@ Opanayiko paccattaṁ veditabbo viññūhī 'ti.`,
                 title: 'Dhammābhīgitiṁ',
                 duration: '4:00',
                 description: 'Pujian tertinggi kepada Dhamma',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/dhammabighitim.mp3'),
                 paliText: `Handa mayaṁ dhammābhīgitiṁ karoma se
 
 Svākkhātatādiguṇayogavasena seyyo
@@ -191,6 +193,8 @@ Dhammaṁ me vandamānena (wanita: vandamānāya)
 Yaṁ puññaṁ pasutaṁ idha
 Sabbepi antarāyā me
 Māhesuṁ tassa tejasā
+
+
 (bernamakāra sambil membacakan)
 Kāyena vācāya va cetasā vā
 Dhamme kukammaṁ pakataṁ mayā yaṁ
@@ -222,6 +226,8 @@ Segala kebajikan yang dilakukan di sini
 Dengan memberi penghormatan kepada Dhamma
 Semoga dengan kekuatan ini
 Segala rintangan ku lenyap
+
+
 (bernamakāra sambil membacakan)
 Segala perbuatan buruk yang kulakukan kepada Dhamma
 Melalui perbuatan, ucapan, ataupun pikiran
@@ -232,7 +238,7 @@ Dan semoga di masa mendatang tidak melakukan kesalahan kepada Dhamma`
                 title: 'Saṅghānussati',
                 duration: '2:30',
                 description: 'Perenungan terhadap Saṅgha',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/sanghaNusati.mp3'),
                 paliText: `Supaṭipanno bhagavato sāvakasaṅgho
 Ujupaṭipanno bhagavato sāvakasaṅgho
 Ñāyapaṭipanno bhagavato sāvakasaṅgho
@@ -255,7 +261,7 @@ Ladang kebajikan yang tiada taranya di alam semesta.`
                 title: 'Saṅghābhīgitiṁ',
                 duration: '4:00',
                 description: 'Pujian tertinggi kepada Saṅgha',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/shangha-bighitim.mp3'),
                 paliText: `Handa mayaṁ saṅghābhīgitiṁ karoma se
 
 Saddhammajo supaṭipattiguṇādiyutto
@@ -282,6 +288,8 @@ Saṅghaṁ me vandamānena (wanita: vandamānāya)
 Yaṁ puññaṁ pasutaṁ idha
 Sabbepi antarāyā me
 Māhesuṁ tassa tejasā
+
+
 (bernamakāra sambil membacakan)
 Kāyena vācāya va cetasā vā
 Saṅghe kukammaṁ pakataṁ mayā yaṁ
@@ -313,6 +321,8 @@ Segala kebajikan yang dilakukan di sini
 Dengan memberi penghormatan kepada Saṅgha
 Semoga dengan kekuatan ini
 Segala rintangan ku lenyap
+
+
 (bernamakāra sambil membacakan)
 Segala perbuatan buruk yang kulakukan kepada Saṅgha
 Melalui perbuatan, ucapan, ataupun pikiran
@@ -323,8 +333,10 @@ Dan semoga di masa mendatang tidak melakukan kesalahan kepada Saṅgha`
                 title: 'Brahmavihārapharaṇā',
                 duration: '4:30',
                 description: 'Peresapan terhadap sifat-sifat luhur (Mettā, Karuṇā, Muditā, Upekkhā)',
-                audioUrl: '#',
-                paliText: `METTĀ:
+                audioUrl: require('@/assets/audio/brahmavihara.mp3'),
+                paliText: `Handa mayaṁ brahmavihārapharaṇā karoma se
+
+METTĀ:
 Ahaṁ sukhito homi
 Niddukkho homi
 Avero homi
@@ -357,7 +369,10 @@ Kammapaṭisaraṇā
 Yaṁ kammaṁ karissanti
 Kalyāṇaṁ vā pāpakaṁ vā
 Tassa dāyādā bhavissanti.`,
-                translation: `CINTA KASIH:
+                translation: `Marilah kita membacakan peresapan terhadap sifat-sifat
+luhur
+
+CINTA KASIH:
 Semoga aku berbahagia
 Bebas dari penderitaan
 Bebas dari kebencian
@@ -391,8 +406,9 @@ Itulah yang akan diwarisinya.`
                 title: 'Pattidāna Gāthā',
                 duration: '3:00',
                 description: 'Syair pelimpahan jasa',
-                audioUrl: '#',
-                paliText: `Puññassidāni katassa
+                audioUrl: require('@/assets/audio/patidhana-gatha.mp3'),
+                paliText: `Handamayaṁ pattidāna gāthāyo bhaṇāma se
+Puññassidāni katassa
 Yānaññāni katāni me
 Tesañca bhāgino hontu
 Sattānantāppamāṇakā
@@ -414,7 +430,9 @@ Sabbe sattā sadā hontu
 Averā sukhajīvino
 Khemappadañca pappontu
 Tesāsā sijjhataṁ subhā`,
-                translation: `Semoga jasa-jasa yang kuperbuat
+                translation: `Marilah kita membacakan syair pelimpahan jasa
+
+Semoga jasa-jasa yang kuperbuat
 Kini atau di waktu lain
 Diterima oleh semua makhluk di sini,
 Tak terbatas, tak terhingga

@@ -3,7 +3,7 @@ export const PujaPagi = [
                 title: 'Namakāra Gāthā',
                 duration: '4:30',
                 description: 'Penghormatan kepada Tiratana (Buddha, Dhamma, Sangha)',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/namakara-gatha.mp3'),
                 paliText: `• Arahaṁ sammāsambuddho bhagavā
 Buddhaṁ bhagavantaṁ abhivādemi. (namakāra).
 
@@ -25,10 +25,8 @@ Aku bersujud di hadapan Saṅgha. (namakāra).`
                 title: 'Pūja Gāthā',
                 duration: '3:15',
                 description: 'Persiapan puja dan penghormatan awal',
-                audioUrl: '#',
-                paliText: `Yamamha kho mayaṁ bhagavantaṁ saranaṁ
-gatā, (uddissa pabbajitā)¹
-, yo no bhagavā satthā,
+                audioUrl: require('@/assets/audio/puja-gatha.mp3'),
+                paliText: `Yamamha kho mayaṁ bhagavantaṁ saranaṁ gatā, (uddissa pabbajitā)¹ , yo no bhagavā satthā,
 yassa ca mayaṁ bhagavato dhammaṁ rocema,
 imehi sakkārehi taṁ bhagavantaṁ sasadhammaṁ.
 sasāvakasaṅghaṁ abhipūjayāma.`,
@@ -42,7 +40,7 @@ Saṅgha.`
                 title: 'Vandana',
                 duration: '3:15',
                 description: 'Penghormatan',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/vandana.mp3'),
                 paliText: `• Handadāni mayantaṁ bhagavantaṁ vācāya
 abhithutuṁ pubbabhāganamakāraṁ karoma se.
 
@@ -57,8 +55,9 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
                 title: 'Buddhābhitthutiṁ',
                 duration: '5:20',
                 description: 'Pujian kepada Buddha',
-                audioUrl: '#',
-                paliText: `• Yo so tathāgato arahaṁ sammāsambuddho,
+                audioUrl: require('@/assets/audio/buddhabithutim.mp3'),
+                paliText: `• Handa mayaṁ Buddhābhithutiṁ karoma se
+• Yo so tathāgato arahaṁ sammāsambuddho,
 • vijjācaraṇasampanno sugato lokavidū,
 • anuttaro purisadhammasārathi satthā devamanussānaṁ buddho bhagavā,
 • yo imaṁ lokaṁ sadevakaṁ samārakaṁ sabrahmakaṁ,
@@ -89,7 +88,7 @@ kepada Sang Bhagavā saya bersujud.`
                 title: 'Dhammābhitthutiṁ',
                 duration: '4:45',
                 description: 'Pujian kepada Dhamma',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/dhammabithutim.mp3'),
                 paliText: `• Handa mayaṁ Dhammābhithutiṁ karoma se
 
 • Yo so svākkhāto bhagavatā dhammo,
@@ -107,7 +106,7 @@ saya bersujud.`
                 title: 'Saṅghābhitthutiṁ',
                 duration: '4:45',
                 description: 'Pujian kepada Dhamma dan Sangha',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/sanghabithutim.mp3'),
                 paliText: `• Handa mayaṁ Saṅghābhithutiṁ karoma se.
 
 • Yo so supaṭipanno bhagavato sāvakasaṅgho,
@@ -140,7 +139,7 @@ saya bersujud.`
                 title: 'Ratanattayappaṇāmagāthā',
                 duration: '6:10',
                 description: 'Syair pemujaan Tiratana dan penghilang ketakuhan',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/ratanattayappaṇāmagāthā.mp3'),
                 paliText: `• Handa mayaṁ ratanattayappaṇāmagāthāyo ceva saṁvegavatthuparidīpakapāṭhañca bhaṇāma se.
 
 • Buddho susuddho karuṇāmahaṇṇavo,
@@ -210,7 +209,7 @@ diakhiri secara penuh. `
                 title: 'ABHIṆHAPPACCAVEKKHAṆAPĀṬHO',
                 duration: '4:20',
                 description: 'Perenungan',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/abinha.mp3'),
                 paliText: `• Handa mayaṁ abhiṇhappaccavekkhanapāthaṁ bhaṇāma se
 
 • Jarādhammomhi,
@@ -251,7 +250,7 @@ direnungkan secara terus-menerus
                 title: 'UDDISANADHITTHĀNA GĀTHĀ',
                 duration: '4:20',
                 description: 'Pelimpahan Jasa',
-                audioUrl: '#',
+                audioUrl: require('@/assets/audio/udisena.mp3'),
                 paliText: `• Handa mayaṁ uddisanadhitthāna gāthāyo bhaṇāma se.
 
 • Iminā puññakammena.

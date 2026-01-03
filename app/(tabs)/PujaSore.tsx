@@ -1,4 +1,5 @@
 import { PujaSore } from '@/pujaData/PujaSore';
+import { Audio, ResizeMode, Video } from 'expo-av';
 import React, { useState } from 'react';
 import {
     Dimensions,
@@ -10,23 +11,117 @@ import {
     View,
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import WebView from 'react-native-webview';
 
 const PujaSoreComponent = () => {
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const [currentTrack, setCurrentTrack] = useState<number | null>(null);
     const [fontSize, setFontSize] = useState<number>(16);
+    const [audioPosition, setAudioPosition] = useState<number>(0);
+    const [audioDuration, setAudioDuration] = useState<number>(0);
     const [sectionTranslations, setSectionTranslations] = useState<{[key: number]: boolean}>({});
+    const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
+    const [videoPosition, setVideoPosition] = useState<number>(0);
+    const [videoDuration, setVideoDuration] = useState<number>(0);
+    const [isMuted, setIsMuted] = useState<boolean>(false);
+    const videoRef = React.useRef<Video>(null);
+    const soundRef = React.useRef<Audio.Sound | null>(null);
     const screenWidth = Dimensions.get('window').width;
-    const videoHeight = (screenWidth - 32) * 9 / 16;
 
-    const handlePlayPause = (index: number) => {
-        if (currentTrack === index && isPlaying) {
-            setIsPlaying(false);
-            setCurrentTrack(null);
+    React.useEffect(() => {
+        return () => {
+            if (soundRef.current) {
+                soundRef.current.unloadAsync();
+            }
+        };
+    }, []);
+
+    const handleVideoPlayPause = async () => {
+        if (videoRef.current) {
+        if (isVideoPlaying) {
+            await videoRef.current.pauseAsync();
         } else {
-            setIsPlaying(true);
-            setCurrentTrack(index);
+            await videoRef.current.playAsync();
+        }
+        setIsVideoPlaying(!isVideoPlaying);
+        }
+    };
+
+    const handleSeek = async (percentage: number) => {
+        if (videoRef.current && videoDuration > 0) {
+        const newPosition = videoDuration * percentage;
+        await videoRef.current.setPositionAsync(newPosition);
+        }
+    };
+
+    const toggleMute = async () => {
+        if (videoRef.current) {
+        await videoRef.current.setIsMutedAsync(!isMuted);
+        setIsMuted(!isMuted);
+        }
+    };
+
+    const formatTime = (milliseconds: number) => {
+        const totalSeconds = Math.floor(milliseconds / 1000);
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    };
+
+    const formatTimeFromSeconds = (seconds: number) => {
+        const mins = Math.floor(seconds / 1000 / 60);
+        const secs = Math.floor((seconds / 1000) % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    };
+
+    const onPlaybackStatusUpdate = (status: any) => {
+        if (status.isLoaded) {
+        setVideoPosition(status.positionMillis || 0);
+        setVideoDuration(status.durationMillis || 0);
+        setIsVideoPlaying(status.isPlaying);
+        }
+    };
+
+    const handlePlayPause = async (index: number) => {
+        try {
+            if (currentTrack === index && isPlaying) {
+                await soundRef.current?.pauseAsync();
+                setIsPlaying(false);
+            } else if (currentTrack === index && !isPlaying) {
+                await soundRef.current?.playAsync();
+                setIsPlaying(true);
+            } else {
+                if (soundRef.current) {
+                    await soundRef.current.unloadAsync();
+                }
+
+                setAudioPosition(0);
+                setAudioDuration(0);
+
+                const { sound } = await Audio.Sound.createAsync(
+                    PujaSore[index].audioUrl,
+                    { shouldPlay: true }
+                );
+
+                soundRef.current = sound;
+                setCurrentTrack(index);
+                setIsPlaying(true);
+
+                sound.setOnPlaybackStatusUpdate((status) => {
+                    if (status.isLoaded) {
+                        setAudioPosition(status.positionMillis || 0);
+                        setAudioDuration(status.durationMillis || 0);
+                        
+                        if (status.didJustFinish) {
+                            setIsPlaying(false);
+                            setCurrentTrack(null);
+                            setAudioPosition(0);
+                            setAudioDuration(0);
+                        }
+                    }
+                });
+            }
+        } catch (error) {
+            console.error('Error playing audio:', error);
         }
     };
 
@@ -61,11 +156,11 @@ const PujaSoreComponent = () => {
 
             {/* Header dengan Controls */}
             <View className="bg-white shadow-md border-b-2 border-yellow-600 px-4 py-3">
-                <View className="flex-row items-center justify-between mb-3">
-                    <Text className="text-2xl font-bold text-yellow-700">
-                        <FontAwesome5 name="cloud-sun" size={20} color="#ca8a04" /> Puja Petang
-                    </Text>
-                </View>
+                    <View className="flex-row items-center justify-between mb-3">
+                        <Text className="text-2xl font-bold text-yellow-700">
+                        <FontAwesome5 name="sun" size={20} color="#ca8a04" /> Puja Petang
+                        </Text>
+                    </View>
 
                 <View className="flex-row items-center justify-center bg-yellow-100 px-3 py-2 rounded-full border border-yellow-300">
                     <FontAwesome5 name="clock" size={12} color="#854d0e" style={{ marginRight: 6 }} />
@@ -75,25 +170,84 @@ const PujaSoreComponent = () => {
 
             <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
                 {/* Video Section */}
-                <View className="bg-white mx-4 my-4 rounded-xl shadow-md border-2 border-yellow-300">
-                    <View className="bg-red-800 p-4 rounded-t-xl">
-                        <View className="flex-row items-center">
-                            <FontAwesome5 name="youtube" size={20} color="white" style={{ marginRight: 8 }} />
-                            <Text className="text-white font-semibold text-base">Video Panduan Puja Petang</Text>
+                <View className="bg-white mx-4 my-4 rounded-xl shadow-lg overflow-hidden border border-yellow-200">
+                            <View className="bg-red-800 px-4 py-3">
+                                <View className="flex-row items-center">
+                                <View className="bg-red-700 p-2 rounded-lg mr-3">
+                                    <FontAwesome5 name="youtube" size={18} color="white" />
+                                </View>
+                                <Text className="text-white font-bold text-base">Video Panduan Puja Petang</Text>
+                                </View>
+                            </View>
+
+                            <View className="bg-black">
+                                <Video
+                                ref={videoRef}
+                                source={require('@/assets/videos/paritta.mp4')}
+                                style={{
+                                    width: screenWidth - 32,
+                                    height: (screenWidth - 32) * 9 / 16,
+                                    backgroundColor: '#000',
+                                }}
+                                resizeMode={ResizeMode.CONTAIN}
+                                isLooping={false}
+                                onPlaybackStatusUpdate={onPlaybackStatusUpdate}
+                                />
+
+                                {/* Video Controls - OUTSIDE video */}
+                                <View className="bg-gray-900 px-4 py-3">
+                                {/* Progress Bar - SEKARANG BISA DI-TAP! */}
+                                <TouchableOpacity 
+                                    activeOpacity={0.8}
+                                    className="mb-3"
+                                    onPress={(e) => {
+                                    const locationX = e.nativeEvent.locationX;
+                                    const width = screenWidth - 32 - 32;
+                                    const percentage = locationX / width;
+                                    handleSeek(percentage);
+                                    }}
+                                >
+                                    <View className="bg-gray-700 h-1.5 rounded-full overflow-hidden">
+                                    <View 
+                                        className="bg-red-600 h-1.5" 
+                                        style={{ 
+                                        width: videoDuration > 0 ? `${(videoPosition / videoDuration) * 100}%` : '0%' 
+                                        }} 
+                                    />
+                                    </View>
+                                </TouchableOpacity>
+
+                                {/* Controls Row */}
+                                <View className="flex-row items-center justify-between">
+                                    {/* Play/Pause Button */}
+                                    <TouchableOpacity
+                                    onPress={handleVideoPlayPause}
+                                    className="mr-3 p-1"
+                                    >
+                                    <FontAwesome5
+                                        name={isVideoPlaying ? "pause" : "play"}
+                                        size={22}
+                                        color="white"
+                                    />
+                                    </TouchableOpacity>
+
+                                    {/* Time Display */}
+                                    <Text className="text-white text-sm font-medium flex-1">
+                                    {formatTime(videoPosition)} / {formatTime(videoDuration)}
+                                    </Text>
+
+                                    {/* Volume/Mute Button */}
+                                    <TouchableOpacity onPress={toggleMute} className="ml-3 p-1">
+                                    <FontAwesome5
+                                        name={isMuted ? "volume-mute" : "volume-up"}
+                                        size={20}
+                                        color="white"
+                                    />
+                                    </TouchableOpacity>
+                                </View>
+                                </View>
+                            </View>
                         </View>
-                    </View>
-                    <View className="p-4 bg-amber-50">
-                        <WebView
-                            source={{ uri: 'https://www.youtube.com/embed/xmep1pDou_0' }}
-                            style={{
-                                width: screenWidth - 64,
-                                height: videoHeight - 32,
-                                borderRadius: 8,
-                            }}
-                            allowsFullscreenVideo
-                        />
-                    </View>
-                </View>
 
                 {/* Persiapan Section */}
                 <View className="flex-row mx-4 mb-4 space-x-4">
@@ -250,64 +404,65 @@ const PujaSoreComponent = () => {
                         </View>
 
                         <View className="p-4 bg-amber-50">
-                            {/* Audio Controls */}
                             <View className="mb-4">
-                                <TouchableOpacity
-                                    onPress={() => handlePlayPause(index)}
-                                    className={`flex-row items-center justify-center py-3 px-4 rounded-lg ${
-                                        currentTrack === index && isPlaying
-                                            ? 'bg-red-800'
-                                            : 'bg-yellow-100 border-2 border-yellow-300'
-                                    }`}
-                                >
-                                    <FontAwesome5
-                                        name={currentTrack === index && isPlaying ? "pause" : "play"}
-                                        size={16}
-                                        color={currentTrack === index && isPlaying ? "white" : "#854d0e"}
-                                        style={{ marginRight: 8 }}
-                                    />
-                                    <Text className={`font-semibold ${
-                                        currentTrack === index && isPlaying ? 'text-white' : 'text-yellow-800'
-                                    }`}>
-                                        {currentTrack === index && isPlaying ? 'Jeda Audio' : 'Putar Audio'}
-                                    </Text>
-                                </TouchableOpacity>
-
-                                {/* Audio Progress */}
-                                {currentTrack === index && isPlaying && (
-                                    <View className="mt-3 p-3 bg-white rounded-lg border border-yellow-300">
-                                        <View className="flex-row items-center">
-                                            <FontAwesome5 name="volume-up" size={14} color="#854d0e" style={{ marginRight: 8 }} />
-                                            <View className="flex-1 bg-yellow-200 rounded-full h-2 mr-3">
-                                                <View className="bg-red-800 h-2 rounded-full" style={{ width: '33%' }} />
-                                            </View>
-                                            <Text className="text-xs text-yellow-800 font-medium">1:15 / {section.duration}</Text>
-                                        </View>
+                            <TouchableOpacity
+                                onPress={() => handlePlayPause(index)}
+                                className={`flex-row items-center justify-center py-3 px-4 rounded-lg ${
+                                            currentTrack === index && isPlaying
+                                    ? 'bg-red-800'
+                                    : 'bg-yellow-100 border-2 border-yellow-300'
+                                }`}
+                            >
+                                <FontAwesome5
+                                name={currentTrack === index && isPlaying ? "pause" : "play"}
+                                size={16}
+                                color={currentTrack === index && isPlaying ? "white" : "#854d0e"}
+                                style={{ marginRight: 8 }}
+                                />
+                                <Text className={`font-semibold ${
+                                            currentTrack === index && isPlaying ? 'text-white' : 'text-yellow-800'
+                                }`}>
+                                {currentTrack === index && isPlaying ? 'Jeda Audio' : 'Putar Audio'}
+                                </Text>
+                            </TouchableOpacity>
+                        
+                            {currentTrack === index && isPlaying && (
+                                <View className="mt-3 p-3 bg-white rounded-lg border border-yellow-300">
+                                <View className="flex-row items-center">
+                                    <FontAwesome5 name="volume-up" size={14} color="#854d0e" style={{ marginRight: 8 }} />
+                                    <View className="flex-1 bg-yellow-200 rounded-full h-2 mr-3">
+                                    <View 
+                                        className="bg-red-800 h-2 rounded-full" 
+                                        style={{ 
+                                        width: audioDuration > 0 ? `${(audioPosition / audioDuration) * 100}%` : '0%' 
+                                        }} 
+                                                />
                                     </View>
-                                )}
+                                    <Text className="text-xs text-yellow-800 font-medium">
+                                    {formatTimeFromSeconds(audioPosition)} / {formatTimeFromSeconds(audioDuration)}
+                                    </Text>
+                                </View>
+                                </View>
+                            )}
                             </View>
-
-                            {/* Pali Text */}
-                            {/* Pali Text */}
+                        
                             <View className="mb-4">
-                            <View className="flex-row items-center mb-3">
+                            <View className="flex-row items-start mb-3">
                                 <FontAwesome5 name="book" size={16} color="#854d0e" style={{ marginRight: 8 }} />
                                 <Text className="text-yellow-800 font-bold">Teks Pali</Text>
                             </View>
                             <View className="bg-white p-4 rounded-lg border-2 border-yellow-200">
                                 {section.paliText.split('\n').map((line, lineIndex) => {
                                 const trimmedLine = line.trim();
-                                
-                                // Skip empty lines
+                        
                                 if (trimmedLine === '') {
                                     return <View key={lineIndex} style={{ height: 12 }} />;
                                 }
-                                
-                                // Remove existing bullet if present
+                        
                                 const textContent = trimmedLine.startsWith('•') 
                                     ? trimmedLine.substring(1).trim() 
                                     : trimmedLine;
-                                
+                        
                                 return (
                                     <View key={lineIndex} className="flex-row mb-2" style={{ paddingLeft: 4 }}>
                                     <Text
@@ -337,8 +492,7 @@ const PujaSoreComponent = () => {
                                 })}
                             </View>
                             </View>
-
-                            {/* Translation */}
+                        
                             {isSectionTranslationVisible(index) && (
                             <View>
                                 <View className="flex-row items-center mb-3">
@@ -348,17 +502,15 @@ const PujaSoreComponent = () => {
                                 <View className="bg-red-50 p-4 rounded-lg border-2 border-red-200">
                                 {section.translation.split('\n').map((line, lineIndex) => {
                                     const trimmedLine = line.trim();
-                                    
-                                    // Skip empty lines
+                        
                                     if (trimmedLine === '') {
-                                    return <View key={lineIndex} style={{ height: 12 }} />;
+                                                return <View key={lineIndex} style={{ height: 12 }} />;
                                     }
-                                    
-                                    // Remove existing bullet if present
+                        
                                     const textContent = trimmedLine.startsWith('•') 
                                     ? trimmedLine.substring(1).trim() 
                                     : trimmedLine;
-                                    
+                        
                                     return (
                                     <View key={lineIndex} className="flex-row mb-2" style={{ paddingLeft: 4 }}>
                                         <Text
@@ -373,13 +525,13 @@ const PujaSoreComponent = () => {
                                         •
                                         </Text>
                                         <Text
-                                        className="text-red-900 flex-1"
+                                                    className="text-red-900 flex-1"
                                         style={{
                                             fontSize: fontSize - 1,
                                             lineHeight: (fontSize - 1) * 1.5,
                                         }}
                                         >
-                                        {textContent}
+                                                    {textContent}
                                         </Text>
                                     </View>
                                     );
