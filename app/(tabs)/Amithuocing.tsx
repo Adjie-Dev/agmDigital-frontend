@@ -24,7 +24,7 @@ const AmithuocingPage = () => {
     const [isMuted, setIsMuted] = useState<boolean>(false);
     const videoRef = React.useRef<Video>(null);
 
-        const handleVideoPlayPause = async () => {
+    const handleVideoPlayPause = async () => {
         if (videoRef.current) {
         if (isVideoPlaying) {
             await videoRef.current.pauseAsync();
@@ -112,25 +112,25 @@ const AmithuocingPage = () => {
 
             <View className="flex-row items-center justify-center bg-yellow-100 px-3 py-2 rounded-full border border-yellow-300">
             <FontAwesome5 name="clock" size={12} color="#854d0e" style={{ marginRight: 6 }} />
-            <Text className="text-yellow-800 text-sm font-medium">Waktu Terbaik: 05:00 - 07:00 WIB</Text>
+            <Text className="text-yellow-800 text-sm font-medium">Waktu Terbaik: Pagi dan Sore</Text>
             </View>
         </View>
 
         <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
             {/* Video Section */}
             <View className="bg-white mx-4 my-4 rounded-xl shadow-lg overflow-hidden border border-yellow-200">
-                        <View className="bg-red-800 px-4 py-3">
-                            <View className="flex-row items-center">
+                <View className="bg-red-800 px-4 py-3">
+                    <View className="flex-row items-center">
                             <View className="bg-red-700 p-2 rounded-lg mr-3">
-                                <FontAwesome5 name="youtube" size={18} color="white" />
-                            </View>
-                            <Text className="text-white font-bold text-base">Video Panduan Amitabha Sutra</Text>
-                            </View>
-                        </View>
+                        <FontAwesome5 name="youtube" size={18} color="white" />
+                    </View>
+                    <Text className="text-white font-bold text-base">Video Panduan Amitabha Sutra</Text>
+                    </View>
+                </View>
 
-                        <View className="bg-black">
-                            <Video
-                            ref={videoRef}
+                <View className="bg-black">
+                    <Video
+                    ref={videoRef}
                             source={require('@/assets/videos/fo_Shuo_A_Mi_Tuo_Jing.mp4')}
                             style={{
                                 width: screenWidth - 32,
@@ -139,12 +139,9 @@ const AmithuocingPage = () => {
                             }}
                             resizeMode={ResizeMode.CONTAIN}
                             isLooping={false}
-                            onPlaybackStatusUpdate={onPlaybackStatusUpdate}
-                            />
-
-                            {/* Video Controls - OUTSIDE video */}
-                            <View className="bg-gray-900 px-4 py-3">
-                            {/* Progress Bar - SEKARANG BISA DI-TAP! */}
+                    onPlaybackStatusUpdate={onPlaybackStatusUpdate}
+                    />
+                    <View className="bg-gray-900 px-4 py-3">
                             <TouchableOpacity 
                                 activeOpacity={0.8}
                                 className="mb-3"
@@ -193,9 +190,9 @@ const AmithuocingPage = () => {
                                 />
                                 </TouchableOpacity>
                             </View>
-                            </View>
-                        </View>
                     </View>
+                </View>
+            </View>
 
             {/* Persiapan Section */}
             <View className="flex-row mx-4 mb-4 space-x-4">
@@ -224,7 +221,6 @@ const AmithuocingPage = () => {
 
             {/* Content */}
             <View className="p-4 bg-amber-50">
-                {/* Font Size Controls */}
                 <View className="mb-4">
                 <View className="flex-row items-center mb-3">
                     <FontAwesome5 name="font" size={14} color="#854d0e" style={{ marginRight: 8 }} />
@@ -391,7 +387,6 @@ const AmithuocingPage = () => {
                 </View>
 
                 {/* Pali Text */}
-                {/* Pali Text */}
                 <View className="mb-4">
                 <View className="flex-row items-center mb-3">
                     <FontAwesome5 name="book" size={16} color="#854d0e" style={{ marginRight: 8 }} />
@@ -401,12 +396,10 @@ const AmithuocingPage = () => {
                     {section.paliText.split('\n').map((line, lineIndex) => {
                     const trimmedLine = line.trim();
                     
-                    // Skip empty lines
                     if (trimmedLine === '') {
                         return <View key={lineIndex} style={{ height: 12 }} />;
                     }
                     
-                    // Remove existing bullet if present
                     const textContent = trimmedLine.startsWith('•') 
                         ? trimmedLine.substring(1).trim() 
                         : trimmedLine;

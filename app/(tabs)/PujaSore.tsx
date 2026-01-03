@@ -154,7 +154,6 @@ const PujaSoreComponent = () => {
         <SafeAreaView className="flex-1 bg-amber-50">
             <StatusBar barStyle="dark-content" backgroundColor="#FFF8E7" />
 
-            {/* Header dengan Controls */}
             <View className="bg-white shadow-md border-b-2 border-yellow-600 px-4 py-3">
                     <View className="flex-row items-center justify-between mb-3">
                         <Text className="text-2xl font-bold text-yellow-700">
@@ -194,9 +193,7 @@ const PujaSoreComponent = () => {
                                 onPlaybackStatusUpdate={onPlaybackStatusUpdate}
                                 />
 
-                                {/* Video Controls - OUTSIDE video */}
                                 <View className="bg-gray-900 px-4 py-3">
-                                {/* Progress Bar - SEKARANG BISA DI-TAP! */}
                                 <TouchableOpacity 
                                     activeOpacity={0.8}
                                     className="mb-3"
@@ -219,7 +216,6 @@ const PujaSoreComponent = () => {
 
                                 {/* Controls Row */}
                                 <View className="flex-row items-center justify-between">
-                                    {/* Play/Pause Button */}
                                     <TouchableOpacity
                                     onPress={handleVideoPlayPause}
                                     className="mr-3 p-1"
@@ -259,7 +255,6 @@ const PujaSoreComponent = () => {
                     </View>
                 </View>
 
-                {/* Enhanced Custom Font Section */}
                 <View className="mx-4 mb-4 bg-white rounded-xl shadow-md border-2 border-yellow-300">
                     {/* Header */}
                     <View className="bg-yellow-600 p-4 rounded-t-xl">

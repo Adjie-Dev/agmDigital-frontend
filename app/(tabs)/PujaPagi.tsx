@@ -195,9 +195,7 @@ const Pujapagi = () => {
               onPlaybackStatusUpdate={onPlaybackStatusUpdate}
             />
 
-            {/* Video Controls - OUTSIDE video */}
             <View className="bg-gray-900 px-4 py-3">
-              {/* Progress Bar - SEKARANG BISA DI-TAP! */}
               <TouchableOpacity 
                 activeOpacity={0.8}
                 className="mb-3"
@@ -218,9 +216,7 @@ const Pujapagi = () => {
                 </View>
               </TouchableOpacity>
 
-              {/* Controls Row */}
               <View className="flex-row items-center justify-between">
-                {/* Play/Pause Button */}
                 <TouchableOpacity
                   onPress={handleVideoPlayPause}
                   className="mr-3 p-1"

@@ -1,4 +1,5 @@
 import { ParittaAvamanggala } from '@/pujaData/ParittaAvamangala';
+import { ResizeMode, Video } from 'expo-av';
 import React, { useState } from 'react';
 import {
     Dimensions,
@@ -10,7 +11,6 @@ import {
     View,
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import WebView from 'react-native-webview';
 
 const Avamangala = () => {
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -18,7 +18,51 @@ const Avamangala = () => {
     const [fontSize, setFontSize] = useState<number>(16);
     const [sectionTranslations, setSectionTranslations] = useState<{[key: number]: boolean}>({});
     const screenWidth = Dimensions.get('window').width;
-    const videoHeight = (screenWidth - 32) * 9 / 16;
+    const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
+    const [videoPosition, setVideoPosition] = useState<number>(0);
+    const [videoDuration, setVideoDuration] = useState<number>(0);
+    const [isMuted, setIsMuted] = useState<boolean>(false);
+    const videoRef = React.useRef<Video>(null);
+
+    const handleVideoPlayPause = async () => {
+        if (videoRef.current) {
+        if (isVideoPlaying) {
+            await videoRef.current.pauseAsync();
+        } else {
+            await videoRef.current.playAsync();
+        }
+        setIsVideoPlaying(!isVideoPlaying);
+        }
+    };
+
+    const handleSeek = async (percentage: number) => {
+        if (videoRef.current && videoDuration > 0) {
+        const newPosition = videoDuration * percentage;
+        await videoRef.current.setPositionAsync(newPosition);
+        }
+    };
+
+    const toggleMute = async () => {
+        if (videoRef.current) {
+        await videoRef.current.setIsMutedAsync(!isMuted);
+        setIsMuted(!isMuted);
+        }
+    };
+
+    const formatTime = (milliseconds: number) => {
+        const totalSeconds = Math.floor(milliseconds / 1000);
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    };
+
+    const onPlaybackStatusUpdate = (status: any) => {
+        if (status.isLoaded) {
+        setVideoPosition(status.positionMillis || 0);
+        setVideoDuration(status.durationMillis || 0);
+        setIsVideoPlaying(status.isPlaying);
+        }
+    };
 
     const handlePlayPause = (index: number) => {
         if (currentTrack === index && isPlaying) {
@@ -62,35 +106,91 @@ const Avamangala = () => {
         {/* Header*/}
         <View className="bg-white shadow-md border-b-2 border-yellow-600 px-4 py-3">
             <View className="flex-row items-center justify-between mb-3">
-            <Text className="text-2xl font-bold text-yellow-700"><FontAwesome5 name="sun" size={20} color="#ca8a04" /> Puja Pagi</Text>
+            <Text className="text-2xl font-bold text-yellow-700"><FontAwesome5 name="sun" size={20} color="#ca8a04" /> Paritta Avamanggala</Text>
             </View>
 
             <View className="flex-row items-center justify-center bg-yellow-100 px-3 py-2 rounded-full border border-yellow-300">
             <FontAwesome5 name="clock" size={12} color="#854d0e" style={{ marginRight: 6 }} />
-            <Text className="text-yellow-800 text-sm font-medium">Waktu Terbaik: 05:00 - 07:00 WIB</Text>
+            <Text className="text-yellow-800 text-sm font-medium">Waktu Terbaik: Pagi dan Sore</Text>
             </View>
         </View>
 
         <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
             {/* Video Section */}
-            <View className="bg-white mx-4 my-4 rounded-xl shadow-md border-2 border-yellow-300">
-            <View className="bg-red-800 p-4 rounded-t-xl">
-                <View className="flex-row items-center">
-                <FontAwesome5 name="youtube" size={20} color="white" style={{ marginRight: 8 }} />
-                <Text className="text-white font-semibold text-base">Video Panduan Paritta Avamangala</Text>
+            <View className="bg-white mx-4 my-4 rounded-xl shadow-lg overflow-hidden border border-yellow-200">
+                <View className="bg-red-800 px-4 py-3">
+                    <View className="flex-row items-center">
+                            <View className="bg-red-700 p-2 rounded-lg mr-3">
+                        <FontAwesome5 name="youtube" size={18} color="white" />
+                    </View>
+                    <Text className="text-white font-bold text-base">Video Panduan Paritta Avamangala</Text>
+                    </View>
                 </View>
-            </View>
-            <View className="p-4 bg-amber-50">
-                <WebView
-                source={{ uri: 'https://www.youtube.com/embed/xmep1pDou_0' }}
-                style={{
-                    width: screenWidth - 64,
-                    height: videoHeight - 32,
-                    borderRadius: 8,
-                }}
-                allowsFullscreenVideo
-                />
-            </View>
+
+                <View className="bg-black">
+                    <Video
+                    ref={videoRef}
+                            source={require('@/assets/videos/avamangala.mp4')}
+                            style={{
+                                width: screenWidth - 32,
+                                height: (screenWidth - 32) * 9 / 16,
+                                backgroundColor: '#000',
+                            }}
+                            resizeMode={ResizeMode.CONTAIN}
+                            isLooping={false}
+                    onPlaybackStatusUpdate={onPlaybackStatusUpdate}
+                    />
+                    <View className="bg-gray-900 px-4 py-3">
+                            <TouchableOpacity 
+                                activeOpacity={0.8}
+                                className="mb-3"
+                                onPress={(e) => {
+                                const locationX = e.nativeEvent.locationX;
+                                const width = screenWidth - 32 - 32;
+                                const percentage = locationX / width;
+                                handleSeek(percentage);
+                                }}
+                            >
+                                <View className="bg-gray-700 h-1.5 rounded-full overflow-hidden">
+                                <View 
+                                    className="bg-red-600 h-1.5" 
+                                    style={{ 
+                                    width: videoDuration > 0 ? `${(videoPosition / videoDuration) * 100}%` : '0%' 
+                                    }} 
+                                />
+                                </View>
+                            </TouchableOpacity>
+
+                            {/* Controls Row */}
+                            <View className="flex-row items-center justify-between">
+                                {/* Play/Pause Button */}
+                                <TouchableOpacity
+                                onPress={handleVideoPlayPause}
+                                className="mr-3 p-1"
+                                >
+                                <FontAwesome5
+                                    name={isVideoPlaying ? "pause" : "play"}
+                                    size={22}
+                                    color="white"
+                                />
+                                </TouchableOpacity>
+
+                                {/* Time Display */}
+                                <Text className="text-white text-sm font-medium flex-1">
+                                {formatTime(videoPosition)} / {formatTime(videoDuration)}
+                                </Text>
+
+                                {/* Volume/Mute Button */}
+                                <TouchableOpacity onPress={toggleMute} className="ml-3 p-1">
+                                <FontAwesome5
+                                    name={isMuted ? "volume-mute" : "volume-up"}
+                                    size={20}
+                                    color="white"
+                                />
+                                </TouchableOpacity>
+                            </View>
+                    </View>
+                </View>
             </View>
 
             {/* Persiapan Section */}
