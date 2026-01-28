@@ -1,10 +1,10 @@
 export const PathamaPuja = [
-    {
-        title: `DEVATĀBHISAMMANTANA`,
-        duration: `4.30`,
-        description: `Undangan kepada para dewa.`,
-        audioUrl: `#`,
-        paliText: `• Samantā cakkavāḷesu atrāgacchantu devatā, saddhammaṁ munirājassa suṇantu saggamokkhadaṁ, sagge kāme ca rūpe girisikharataṭe cantalikkhe vimāne, dīpe raṭṭhe ca gāme taruvanagahane gehavatthumhi khette, bhummā cāyantu devā jalathalavisame yakkhagandhabbanāgā, tiṭṭhantā santike yaṁ munivara vacanaṁ sādhavo me suṇantu.
+        {
+                title: `DEVATĀBHISAMMANTANA`,
+                duration: `4.30`,
+                description: `Undangan kepada para dewa.`,
+                audioUrl: `#`,
+                paliText: `• Samantā cakkavāḷesu atrāgacchantu devatā, saddhammaṁ munirājassa suṇantu saggamokkhadaṁ, sagge kāme ca rūpe girisikharataṭe cantalikkhe vimāne, dīpe raṭṭhe ca gāme taruvanagahane gehavatthumhi khette, bhummā cāyantu devā jalathalavisame yakkhagandhabbanāgā, tiṭṭhantā santike yaṁ munivara vacanaṁ sādhavo me suṇantu.
 • Dhammassavanakālo ayambhadantā
 • Dhammassavanakālo ayambhadantā
 • Dhammassavanakālo ayambhadantā
@@ -15,20 +15,20 @@ export const PathamaPuja = [
 • Dhammassavanakālo ayambhadantā
 • Saṅghapayirupāssanakālo ayambhadantā`,
 
-        translation: `• Semoga semua dewa di alam semesta hadir di sini, mendengarkan Dhamma nan Agung dari Sang Bijaksana, yang membimbing (umat) ke surga dan ke kebebasan. Di alam surga dan di alam brahma, di puncak-puncak gunung, di angkasa raya, di pulau-pulau, di desa-desa dan kota, di hutan belukar, di sekeliling rumah dan ladang. Semoga para dewa hadir di bumi melalui air, daratan dan gunung bersama dengan para yakkha, gandhaba dan naga. Dan semoga di mana pun mereka berada, merekadapat mendengarkan sabda Sang Bijaksana sebagai berikut.
+                translation: `• Semoga semua dewa di alam semesta hadir di sini, mendengarkan Dhamma nan Agung dari Sang Bijaksana, yang membimbing (umat) ke surga dan ke kebebasan. Di alam surga dan di alam brahma, di puncak-puncak gunung, di angkasa raya, di pulau-pulau, di desa-desa dan kota, di hutan belukar, di sekeliling rumah dan ladang. Semoga para dewa hadir di bumi melalui air, daratan dan gunung bersama dengan para yakkha, gandhaba dan naga. Dan semoga di mana pun mereka berada, merekadapat mendengarkan sabda Sang Bijaksana sebagai berikut.
 • Sekarang tiba saatnya mendengarkan Dhamma 
 • Sekarang tiba saatnya mendengarkan Dhamma 
 • Sekarang tiba saatnya mendengarkan Dhamma 
 • Sekarang tiba saatnya melihat Buddha
 • Sekarang tiba saatnya mendengarkan Dhamma
 • Sekarang tiba saatnya menghormat Saṅgha`
-    },
-    {
-        title: 'Namakāra Gāthā',
-        duration: '4:30',
-        description: 'Penghormatan kepada Tiratana (Buddha, Dhamma, Sangha)',
-        audioUrl: '#',
-        paliText: `• Arahaṁ sammāsambuddho bhagavā
+        },
+        {
+                title: 'Namakāra Gāthā',
+                duration: '4:30',
+                description: 'Penghormatan kepada Tiratana (Buddha, Dhamma, Sangha)',
+                audioUrl: 'https://res.cloudinary.com/dp1bkwys1/video/upload/v1767786762/namakara-gatha_weuaf6.mp3',
+                paliText: `• Arahaṁ sammāsambuddho bhagavā
 Buddhaṁ bhagavantaṁ abhivādemi. (namakāra).
 
 • Svākkhāto bhagavatā dhammo
@@ -36,7 +36,7 @@ Dhammaṁ namassāmi. (namakāra).
 
 • Supaṭipanno bhagavato sāvakasaṅgho
 Saṅghaṁ namāmi. (namakāra).`,
-        translation: `• Sang Bhagavā, Yang Maha Suci, Yang telah mencapai penerangan sempurna;
+                translation: `• Sang Bhagavā, Yang Maha Suci, Yang telah mencapai penerangan sempurna;
 Aku bersujud di hadapan Sang Buddha, Sang Bhagavā. (namakāra).
 
 • Dhamma telah sempurna dibabarkan oleh Sang Bhagavā;
@@ -44,28 +44,28 @@ Aku bersujud di hadapan Dhamma. (namakāra).
 
 • Saṅgha Siswa Sang Bhagavā telah bertindak sempurna;
 Aku bersujud di hadapan Saṅgha. (namakāra).`
-    },
-    {
-        title: 'Vandana',
-        duration: '3:15',
-        description: 'Penghormatan',
-        audioUrl: '#',
-        paliText: `• Handadāni mayantaṁ bhagavantaṁ vācāya
+        },
+        {
+                title: 'Vandana',
+                duration: '3:15',
+                description: 'Penghormatan',
+                audioUrl: 'https://res.cloudinary.com/dp1bkwys1/video/upload/v1768064648/Vandana_ltdwj2.mp3',
+                paliText: `• Handadāni mayantaṁ bhagavantaṁ vācāya
 abhithutuṁ pubbabhāganamakāraṁ karoma se.
 
 • Namo Sanghyang Ādi Buddhāya (3X).
 • Namo Tassa Bhagavato Arahato Sammāsambuddhassa (3X).
 • Namo Sabbe Bodhisattāya-Mahasattāya (3X).`,
-        translation: `• Terpujilah Sanghyang Ādi Buddha, Tuhan Yang Maha Esa (3X).
+                translation: `• Terpujilah Sanghyang Ādi Buddha, Tuhan Yang Maha Esa (3X).
 • Terpujilah Sang Bhagavā, Yang Maha Suci, Yang telah mencapai Penerangan Sempurna (3X).
 • Terpujilah para Bodhisatta - Mahasatta (3X).`
-    },
-    {
-        title: 'TISARANA',
-        duration: '4:30',
-        description: 'Tiga Perlindungan',
-        audioUrl: '#',
-        paliText: `• Buddhaṁ saraṇaṁ gacchāmi.
+        },
+        {
+                title: 'TISARANA',
+                duration: '4:30',
+                description: 'Tiga Perlindungan',
+                audioUrl: '#',
+                paliText: `• Buddhaṁ saraṇaṁ gacchāmi.
 • Dhammaṁ saraṇaṁ gacchāmi
 • Saṅghaṁ saraṇaṁ gacchāmi
 • Dutiyampi Buddhaṁ saraṇaṁ gacchāmi
@@ -75,7 +75,7 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Tatiyampi Dhammaṁ saraṇaṁ gacchāmi
 • Tatiyampi Saṅghaṁ saraṇaṁ gacchāmi`,
 
-        translation: `• Aku berlindung kepada Buddha.
+                translation: `• Aku berlindung kepada Buddha.
 • Aku berlindung kepada Dhamma.
 • Aku berlindung kepada Saṅgha.
 • Untuk kedua kalinya aku berlindung kepada Buddha.
@@ -84,13 +84,13 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Untuk ketiga kalinya aku berlindung kepada Buddha.
 • Untuk ketiga kalinya aku berlindung kepada Dhamma.
 • Untuk ketiga kalinya aku berlindung kepada Saṅgha.`
-    },
-    {
-        title: 'PAÑCASĪLA',
-        duration: '4:30',
-        description: 'Tiga Perlindungan',
-        audioUrl: '#',
-        paliText: `• Pāṇātipātā veramaṇī sikkhāpadaṁ samādiyāmi
+        },
+        {
+                title: 'PAÑCASĪLA',
+                duration: '4:30',
+                description: 'Tiga Perlindungan',
+                audioUrl: '#',
+                paliText: `• Pāṇātipātā veramaṇī sikkhāpadaṁ samādiyāmi
 • Adinnādānā veramaṇī sikkhāpadaṁ samādiyāmi
 • Kāmesu micchācārā veramaṇī sikkhāpadaṁ samādiyāmi
 • Musāvādā veramaṇī sikkhāpadaṁ samādiyāmi
@@ -99,7 +99,7 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 
 *)Surā (hasil penyulingan), meraya (peragian), majja (zat yang memabukkan) pamādaṭṭhānā (menjadi dasar kelengahan). Zat-zat ini dikonsumsi tidak hanya melalui minuman, akan tetapi dapat melalui makanan, jarum suntik, dihisap ataupun cara konsumsi lainnya.`,
 
-        translation: `• Aku bertekad menghindari pembunuhan makhluk hidup.
+                translation: `• Aku bertekad menghindari pembunuhan makhluk hidup.
 • Aku bertekad tidak mengambil sesuatu yang tidak diberikan.
 • Aku bertekad menghindari perbuatan asusila.
 • Aku bertekad menghindari ucapan yang tidak benar
@@ -107,13 +107,13 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 
 
 *)Surā (hasil penyulingan), meraya (peragian), majja (zat yang memabukkan) pamādaṭṭhānā (menjadi dasar kelengahan). Zat-zat ini dikonsumsi tidak hanya melalui minuman, akan tetapi dapat melalui makanan, jarum suntik, dihisap ataupun cara konsumsi lainnya.`
-    },
-    {
-        title: 'PŪJĀ',
-        duration: '4:30',
-        description: 'puja',
-        audioUrl: '#',
-        paliText: `• Ghanasārappadittena
+        },
+        {
+                title: 'PŪJĀ',
+                duration: '4:30',
+                description: 'puja',
+                audioUrl: '#',
+                paliText: `• Ghanasārappadittena
 • Dīpena tamadhaṁsinā
 • Tilokadīpaṁ sambuddaṁ
 • Pūjayāmi tamonudaṁ.
@@ -138,7 +138,7 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Sārīrikadhātu mahābodhiṁ
 • Buddharūpaṁ sakalaṁ sadā`,
 
-        translation: `• Dengan penerangan ini, yang memancarkan cahaya gemerlapan
+                translation: `• Dengan penerangan ini, yang memancarkan cahaya gemerlapan
 • Menghapus keadaan suram menjadi terang
 • Aku menghormat Buddha Yang Telah Mencapai Penerangan Sempurna.
 • Penghapus saput ketidaktahuan (Avijja).
@@ -166,43 +166,43 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Yang telah menundukkan semua musuh-musuhNya (avijja)
 • Dan dicapailah Kesadaran mutlak
 • Kepada pohon Bodhi inilah aku bersujud.`
-    },
-    {
-        title: 'BUDDHĀNUSSATI',
-        duration: '4:30',
-        description: 'Perenungan terhadap Buddha.',
-        audioUrl: '#',
-        paliText: `• Itipi so bhagavā arahaṁ sammāsambuddho,
+        },
+        {
+                title: 'BUDDHĀNUSSATI',
+                duration: '4:30',
+                description: 'Perenungan terhadap Buddha.',
+                audioUrl: '#',
+                paliText: `• Itipi so bhagavā arahaṁ sammāsambuddho,
 • Vijjācaraṇa sampanno sugato lokavidū,
 • Anuttaro purisadammasārathi
 • Satthā devamanussānaṁ buddho bhagavā ‘ti
 `,
 
-        translation: `• Demkianlah Bhagavā, Yang Maha Suci, 
+                translation: `• Demkianlah Bhagavā, Yang Maha Suci, 
 • yang telah mencapai penerangan sempurna, sempurna pengetahuan serta tindak tandukNya, 
 • sempurna menempuh Sang jalan (ke Nibbāna), pengenal segenap alam, 
 • pembimbing manusia yang tiada taranya, Guru para Dewa dan manusia, yang sadar, yang patut dimuliakan.`
-    },
-    {
-        title: 'DHAMMĀNUSSATI',
-        duration: '4:30',
-        description: 'Perenungan terhadap Dhamma.',
-        audioUrl: '#',
-        paliText: `• Svākkhāto bhagavatā dhammo,
+        },
+        {
+                title: 'DHAMMĀNUSSATI',
+                duration: '4:30',
+                description: 'Perenungan terhadap Dhamma.',
+                audioUrl: '#',
+                paliText: `• Svākkhāto bhagavatā dhammo,
 • Sandiṭṭhiko akāliko ehipassiko,
 • Opanayiko paccattaṁ veditabbo viññūhī ‘ti.
 `,
 
-        translation: `• Dhamma telah sempurna dibabarkan oleh Bhagavā,
+                translation: `• Dhamma telah sempurna dibabarkan oleh Bhagavā,
 • Berada sangat dekat, tak lapuk oleh waktu, mengundang untuk dibuktikan,
 • menuntun ke dalam batin, dapat diselami oleh para bijaksana dalam batin masing-masing.`
-    },
-    {
-        title: 'SANGHĀNUSSATI',
-        duration: '4:30',
-        description: 'Perenungan terhadap Sangha.',
-        audioUrl: '#',
-        paliText: `• Supaṭipanno bhagavato sāvakasaṅgho
+        },
+        {
+                title: 'SANGHĀNUSSATI',
+                duration: '4:30',
+                description: 'Perenungan terhadap Sangha.',
+                audioUrl: '#',
+                paliText: `• Supaṭipanno bhagavato sāvakasaṅgho
 • Ujupaṭipanno bhagavato sāvakasaṅghoÑāyapaṭipanno bhagavato sāvakasaṅghoSāmīcipaṭipanno bhagavato sāvakasaṅgho
 • Yadidaṁ cattāri purisayugāni aṭṭhapurisapuggalā
 • Esa bhagavato sāvakasaṅgho
@@ -212,7 +212,7 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 
 * Pembacaan Buddhānussati, Dhammānussati dan Saṅghānussati dapat diganti dengan membacakan Buddha Vandanā, Dhamma Vandanā dan Saṅgha Vandanā`,
 
-        translation: `• Saṅgha siswa Bhagavā telah bertindak baik
+                translation: `• Saṅgha siswa Bhagavā telah bertindak baik
 • Saṅgha siswa Bhagavā telah bertindak lurus
 • Saṅgha siswa Bhagavā telah bertindak benar
 • Saṅgha siswa Bhagavā telah bertindak patut
@@ -224,13 +224,13 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 
 
 * Pembacaan Buddhānussati, Dhammānussati dan Saṅghānussati dapat diganti dengan membacakan Buddha Vandanā, Dhamma Vandanā dan Saṅgha Vandanā`
-    },
-    {
-        title: 'BUDDHA VANDANĀ',
-        duration: '4:30',
-        description: 'Penghormatan kepada Buddha.',
-        audioUrl: '#',
-        paliText: `• Itipi so bhagavā arahaṁ sammāsambuddho,
+        },
+        {
+                title: 'BUDDHA VANDANĀ',
+                duration: '4:30',
+                description: 'Penghormatan kepada Buddha.',
+                audioUrl: '#',
+                paliText: `• Itipi so bhagavā arahaṁ sammāsambuddho,
 • Vijjācaraṇa sampanno sugato lokavidū,
 • Anuttaro purisadammasārathi
 • Satthā devamanussānaṁ buddho bhagavā ‘ti
@@ -249,7 +249,7 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Buddhe yo khalito doso
 • Buddho khamatu taṁ mamaṁ.`,
 
-        translation: `• Demkianlah Bhagavā, Yang Maha Suci, yang telah mencapai penerangan sempurna, sempurna pengetahuan serta tindak tandukNya, sempurna menempuh Sang jalan (ke Nibbāna), pengenal segenap alam, pembimbing manusia yang tiada taranya, Guru para Dewa dan manusia, yang sadar, yang patut dimuliakan.
+                translation: `• Demkianlah Bhagavā, Yang Maha Suci, yang telah mencapai penerangan sempurna, sempurna pengetahuan serta tindak tandukNya, sempurna menempuh Sang jalan (ke Nibbāna), pengenal segenap alam, pembimbing manusia yang tiada taranya, Guru para Dewa dan manusia, yang sadar, yang patut dimuliakan.
 • Seumur hidup, aku berlindung kepada Buddha hingga tercapainya Nibbāna.
 • Kepada para Buddha dari masa lampau
 • Kepada para Buddha dari masa yang akan datang
@@ -263,13 +263,13 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Di Kaki Yang Maha Suci.
 • Jika aku telah berbuat salah kepada Buddha,
 • Semoga Buddha memaafkan aku.`
-    },
-    {
-        title: 'DHAMMA VANDANĀ',
-        duration: '4:30',
-        description: 'Penghormatan terhadap Dhamma.',
-        audioUrl: '#',
-        paliText: `• Svākkhāto bhagavatā dhammo,
+        },
+        {
+                title: 'DHAMMA VANDANĀ',
+                duration: '4:30',
+                description: 'Penghormatan terhadap Dhamma.',
+                audioUrl: '#',
+                paliText: `• Svākkhāto bhagavatā dhammo,
 • Sandiṭṭhiko akāliko ehipassiko,
 • Opanayiko paccattaṁ veditabbo viññūhī ‘ti.
 • Dhammaṁ jīvitaṁ yāva
@@ -288,7 +288,7 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Dhammo khamatu taṁ mamaṁ.
 `,
 
-        translation: `• Dhamma telah sempurna dibabarkan oleh Bhagavā, Berada sangat dekat, tak lapuk oleh waktu, mengundang untuk dibuktikan, menuntun ke dalam batin, dapat diselami oleh para bijaksana dalam batin masing-masing.
+                translation: `• Dhamma telah sempurna dibabarkan oleh Bhagavā, Berada sangat dekat, tak lapuk oleh waktu, mengundang untuk dibuktikan, menuntun ke dalam batin, dapat diselami oleh para bijaksana dalam batin masing-masing.
 • Seumur hidup, aku berlindung kepada Dhamma hingga tercapainya Nibbāna.
 • Kepada Dhamma dari masa lampau
 • Kepada Dhamma dari masa yang akan datang
@@ -304,13 +304,13 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Jika aku telah berbuat salah kepada Dhamma,
 • Semoga Dhamma memaafkan aku.
 `
-    },
-    {
-        title: 'SANGHA VANDANĀ',
-        duration: '4:30',
-        description: 'Penghormatan terhadap Sangha.',
-        audioUrl: '#',
-        paliText: `• Supaṭipanno bhagavato sāvakasaṅgho
+        },
+        {
+                title: 'SANGHA VANDANĀ',
+                duration: '4:30',
+                description: 'Penghormatan terhadap Sangha.',
+                audioUrl: '#',
+                paliText: `• Supaṭipanno bhagavato sāvakasaṅgho
 • Ujupaṭipanno bhagavato sāvakasaṅgho
 • Ñāyapaṭipanno bhagavato sāvakasaṅgho
 • Sāmīcipaṭipanno bhagavato sāvakasaṅgho
@@ -334,7 +334,7 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Saṅgho khamatu taṁ mamaṁ.
 `,
 
-        translation: `• Saṅgha siswa Bhagavā telah bertindak baik
+                translation: `• Saṅgha siswa Bhagavā telah bertindak baik
 • Saṅgha siswa Bhagavā telah bertindak lurus
 • Saṅgha siswa Bhagavā telah bertindak benar
 • Saṅgha siswa Bhagavā telah bertindak patut
@@ -357,13 +357,13 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Jika aku telah berbuat salah kepada Saṅgha,
 • Semoga Saṅgha memaafkan aku.
 `
-    },
-    {
-        title: 'SACCAKIRIYA GĀTHĀ',
-        duration: '4:30',
-        description: 'syair untuk menyatakan kebenaran.',
-        audioUrl: '#',
-        paliText: `• Natthi me saraṇaṁ aññaṁ
+        },
+        {
+                title: 'SACCAKIRIYA GĀTHĀ',
+                duration: '4:30',
+                description: 'syair untuk menyatakan kebenaran.',
+                audioUrl: '#',
+                paliText: `• Natthi me saraṇaṁ aññaṁ
 • Buddho me saraṇaṁ varaṁ
 • Etena saccavajena
 • Sotthi te hotu sabbadā
@@ -377,7 +377,7 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Sotthi te hotu sabbadā
 `,
 
-        translation: `• Tiada perlindungan lain bagiku
+                translation: `• Tiada perlindungan lain bagiku
 • Buddhalah sesungguhnya pelindungku
 • Berkat kesungguhan pernyataan ini
 • Semoga Anda selamat sejahtera
@@ -390,13 +390,13 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Berkat kesungguhan pernyataan ini
 • Semoga Anda selamat sejahtera
 `
-    },
-    {
-        title: 'KARANĪYAMETTA SUTTA',
-        duration: '4:30',
-        description: 'syair untuk menyatakan kebenaran.',
-        audioUrl: '#',
-        paliText: `• Karaṇīyamatthakusalena,
+        },
+        {
+                title: 'KARANĪYAMETTA SUTTA',
+                duration: '4:30',
+                description: 'syair untuk menyatakan kebenaran.',
+                audioUrl: '#',
+                paliText: `• Karaṇīyamatthakusalena,
 • Yantaṁ santaṁ padaṁ abhisamecca.
 • Sakko ujū ca suhujū ca,
 • Suvaco cassa mudu anatimānī.
@@ -438,7 +438,7 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Na hi jātu gabbhaseyyaṁ punaretī ‘ti.
 `,
 
-        translation: `• Inilah yang harus dikerjakan oleh mereka yang tangkas dalam kebaikan.
+                translation: `• Inilah yang harus dikerjakan oleh mereka yang tangkas dalam kebaikan.
 • Untuk mencapai ketenangan,
 • Ia harus mampu, jujur, sungguh jujur,
 • Rendah hati, lemah lembut, tiada sombong.
@@ -480,13 +480,13 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Hingga bersih dari nafsu indera,
 • Ia tak akan lahir dalam rahim mana pun juga.
 `
-    },
-    {
-        title: 'MANGALA SUTTA',
-        duration: '4:30',
-        description: 'Sutta tentang kewajiban.',
-        audioUrl: '#',
-        paliText: `• Evamme sutaṁ,
+        },
+        {
+                title: 'MANGALA SUTTA',
+                duration: '4:30',
+                description: 'Sutta tentang kewajiban.',
+                audioUrl: '#',
+                paliText: `• Evamme sutaṁ,
 • Ekaṁ samayaṁ bhagavā,
 • Sāvatthiyaṁ viharati,
 • Jetavane anāthapiṇḍikassa, ārāme.
@@ -545,7 +545,7 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Tantesaṁ maṅgalamuttaman ‘ti.
 `,
 
-        translation: `• Demikianlah yang telah kudengar,
+                translation: `• Demikianlah yang telah kudengar,
 • Pada suatu ketika Bhagavā menetap di Sāvatthi
 • Di hutan Jeta di vihara milik Anāthapindika
 • Pada saat itu datanglah sesosok dewa ketika hari menjelang pagi, dengan cahaya yang cemerlang menerangi seluruh hutan Jeta.
@@ -599,13 +599,13 @@ abhithutuṁ pubbabhāganamakāraṁ karoma se.
 • Meraka pergi dengan penuh kesejahteraan,
 • Itulah Berkah Termulia.
 `
-    },
-    {
-        title: 'BRAHMAVIHĀRAPHARANĀ',
-        duration: '4:30',
-        description: 'Penyebaran Brahmavihāra.',
-        audioUrl: '#',
-        paliText: `METTĀ:
+        },
+        {
+                title: 'BRAHMAVIHĀRAPHARANĀ',
+                duration: '4:30',
+                description: 'Penyebaran Brahmavihāra.',
+                audioUrl: '#',
+                paliText: `METTĀ:
 • Ahaṁ sukhito homi
 • Niddukkho homi
 • Avero homi
@@ -644,7 +644,7 @@ UPEKKHĀ :
 * Setelah meditasi, puja bhakti dapat dilanjutkan dengan Dhammadesanā dan Vihara Gita.
 `,
 
-        translation: `Cinta kasih:
+                translation: `Cinta kasih:
 • Semoga aku berbahagia
 • Bebas dari penderitaan
 • Bebas dari kebencian
@@ -679,13 +679,13 @@ Keseimbangan batin:
 * Setelah membacakan Parittā, puja bhakti dilanjutkan dengan meditasi.
 * Setelah meditasi, puja bhakti dapat dilanjutkan dengan Dhammadesanā dan Vihara Gita.
 `
-    },
-    {
-        title: 'ETTĀVATĀ',
-        duration: '4:30',
-        description: 'Sejauh kebajikan yang telah dilakukan ini.',
-        audioUrl: '#',
-        paliText: `• Ettāvatā ca amhehi
+        },
+        {
+                title: 'ETTĀVATĀ',
+                duration: '4:30',
+                description: 'Sejauh kebajikan yang telah dilakukan ini.',
+                audioUrl: '#',
+                paliText: `• Ettāvatā ca amhehi
 • Sambhataṁ puññasampadaṁ
 • Sabbe devānumodantu
 • Sabbasampattisiddhiyā
@@ -733,7 +733,7 @@ Keseimbangan batin:
 • Ciraṁ rakkhantu maṁ paraṁ ‘ti
 `,
 
-        translation: `• Atas semua timbunan kebajikan
+                translation: `• Atas semua timbunan kebajikan
 • Yang telah kami kumpulkan
 • Semoga semua dewa turut bergembira
 • Demi kebahagiaan dan keberhasilan
@@ -779,5 +779,5 @@ Keseimbangan batin:
 • Para dewa dan naga yang perkasa
 • Setelah menikmati jasa-jasa ini
 • Selalu melindungi kita semua.`
-    },
+        },
 ]
