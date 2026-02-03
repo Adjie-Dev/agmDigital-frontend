@@ -26,7 +26,7 @@ const HeroSection = ({ setActiveSection }: HeroSectionProps) => {
 
   return (
     <ImageBackground
-        source={require('@/assets/images/wihara-tantular.png')}
+        source={require('@/assets/images/buddha.png')}
         resizeMode="cover"
         style={{ flex: 1 }}
       >
