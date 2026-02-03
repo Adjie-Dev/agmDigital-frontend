@@ -5,11 +5,7 @@ import Amithuocing from './Amithuocing';
 import Article from './Article';
 import Avamaggala from './Avamangala';
 import Dashboard from './Dashboard';
-import DhammaWacana from './DhammaWacana';
-import DukungKami from './DukungKami';
-import BuddhayanaEbookPage from './EbookPage';
 import HeroSection from './HeroSection';
-import BuddhistCalendar from './KalenderBuddhis';
 import Meditasi from './Meditasi';
 import PathamaPuja from './PathamaPuja';
 import PujapagiScreen from './PujaPagi';
@@ -21,15 +17,11 @@ const App: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const scrollViewRef = useRef<ScrollView>(null);
 
-  // Auto scroll to top whenever section changes
+  // Auto scroll to top
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (scrollViewRef.current) {
-        scrollViewRef.current.scrollTo({ y: 0, animated: false });
-      }
-    }, 50);
-
-    return () => clearTimeout(timer);
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({ y: 0, animated: true });
+    }
   }, [activeSection]);
 
   // Handle back button behavior
@@ -55,29 +47,21 @@ const App: React.FC = () => {
           </>
         );
       case 'PujaPagi':
-        return <PujapagiScreen key="puja-pagi" />;
+        return <PujapagiScreen />;
       case 'PujaSore':
-        return <Pujasore key="puja-sore" />;
+        return <Pujasore />;
       case 'Meditasi':
-        return <Meditasi key="meditasi" />;
+        return <Meditasi />;
       case 'Avamangala':
-        return <Avamaggala key="avamangala" />
+        return <Avamaggala />
       case 'PathamaPuja':
-        return <PathamaPuja key="pathama-puja" />
+        return <PathamaPuja />
       case 'Amithuocing':
-        return <Amithuocing key="amithuocing" />
+        return <Amithuocing />
       case 'Article':
-        return <Article key="article" />
-      case 'Ebook':
-        return <BuddhayanaEbookPage key="ebook" />;
-      case 'DhammaVacana':
-        return <DhammaWacana key="dhamma-wacana" />;
-      case 'CalendarBuddhist':
-        return <BuddhistCalendar setActiveSection={setActiveSection} key="calendar-buddhist" />;
-      case 'DukungKami':
-        return <DukungKami setActiveSection={setActiveSection} key="dukung-kami" />;
+        return <Article />
       case 'TentangKami':
-        return <TentangKami setActiveSection={setActiveSection} key="tentang-kami" />;
+          return <TentangKami setActiveSection={setActiveSection} />;
       default:
         return (
           <>
@@ -88,37 +72,9 @@ const App: React.FC = () => {
     }
   };
 
-  // Halaman yang sudah punya ScrollView sendiri (SafeAreaView + ScrollView)
-  const selfScrollingPages = [
-    'PujaPagi', 
-    'PujaSore', 
-    'Meditasi',
-    'Avamangala',
-    'PathamaPuja',
-    'Amithuocing',
-    'Article',
-    'DukungKami',
-    'TentangKami'
-  ];
-
-  // Jika halaman sudah punya ScrollView sendiri, jangan wrap lagi
-  if (selfScrollingPages.includes(activeSection)) {
-    return (
-      <View className="flex-1 bg-white">
-        <Navbar
-          activeSection={activeSection}
-          isMobileMenuOpen={isMobileMenuOpen}
-          setIsMobileMenuOpen={setIsMobileMenuOpen}
-          setActiveSection={setActiveSection}
-        />
-        {renderContent()}
-      </View>
-    );
-  }
-
-  // Untuk halaman lain (Dashboard, dll), bungkus dengan ScrollView
   return (
     <View className="flex-1 bg-white">
+      {/* Fixed Navbar */}
       <Navbar
         activeSection={activeSection}
         isMobileMenuOpen={isMobileMenuOpen}
@@ -126,6 +82,7 @@ const App: React.FC = () => {
         setActiveSection={setActiveSection}
       />
 
+      {/* Scrollable Content */}
       <ScrollView
         ref={scrollViewRef}
         className="flex-1 bg-gray-50"

@@ -23,48 +23,27 @@ const Navbar: React.FC<NavbarProps> = ({
     const opacityAnim = useRef(new Animated.Value(0)).current;
     const insets = useSafeAreaInsets();
     
-    const [expandedGroups, setExpandedGroups] = useState<{[key: string]: boolean}>({});
+    const [isPujaExpanded, setIsPujaExpanded] = useState(false);
 
     const navItems = [
         { id: 'Dashboard', label: 'Beranda', icon: 'home', color: 'yellow' },
         { 
-            id: 'PaliWacana', 
-            label: 'PĂLI VACANA', 
+            id: 'PujaGroup', 
+            label: 'Puja & Paritta', 
             icon: 'book', 
             color: 'yellow',
             isGroup: true,
             submenu: [
-                { id: 'PathamaPuja', label: 'Pathama Puja', icon: 'book-open' },
                 { id: 'PujaPagi', label: 'Puja Pagi', icon: 'sun' },
                 { id: 'PujaSore', label: 'Puja Petang', icon: 'cloud-sun' },
                 { id: 'Avamangala', label: 'Paritta Avamangala', icon: 'book' },
-            ]
-        },
-        { 
-            id: 'PujaMandarin', 
-            label: 'SUTRA MANDARIN', 
-            icon: 'book', 
-            color: 'yellow',
-            isGroup: true,
-            submenu: [
-                { id: 'Amithuocing', label: 'Amithuocing', icon: 'book-reader' }
+                { id: 'PathamaPuja', label: 'Pathama Puja', icon: 'book-open' },
+                { id: 'Amithuocing', label: 'Amithuocing', icon: 'book-reader' },
             ]
         },
         { id: 'Meditasi', label: 'Meditasi Satipathana', icon: 'spa', color: 'red' },
         { id: 'Article', label: 'Artikel Dharma', icon: 'newspaper', color: 'red' },
-        { 
-            id: 'Ebook', 
-            label: 'E-Book', 
-            icon: 'book', 
-            color: 'yellow',
-            isGroup: true,
-            submenu: [
-                { id: 'Ebook', label: 'E-Book', icon: 'book', color: 'red' },
-                { id: 'DhammaVacana', label: 'Dhamma Vacana', icon: 'book-reader', color: 'red' },
-            ]
-        },
-        { id: 'CalendarBuddhist', label: 'Kalender Buddhis', icon: 'calendar-alt', color: 'yellow' },
-        { id: 'DukungKami', label: 'Dukung Kami', icon: 'hand-holding-heart', color: 'red' },
+        { id: 'TentangKami', label: 'Tentang Kami', icon: 'info-circle', color: 'yellow' },
     ];
 
     useEffect(() => {
@@ -99,11 +78,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
     const handleMenuItemPress = (sectionId: string, isGroup?: boolean) => {
         if (isGroup) {
-            // Toggle expanded state untuk grup tertentu saja
-            setExpandedGroups(prev => ({
-                ...prev,
-                [sectionId]: !prev[sectionId]
-            }));
+            setIsPujaExpanded(!isPujaExpanded);
         } else {
             setActiveSection(sectionId);
             setIsMobileMenuOpen(false);
@@ -154,7 +129,7 @@ const Navbar: React.FC<NavbarProps> = ({
             >
                 <View className="flex-row items-center justify-between px-4 py-3">
                     <Image
-                        source={require('../assets/images/logowihara2.png')}
+                        source={require('../assets/images/logowihara.png')}
                         style={{ width: 73, height: 42, marginLeft: 8, top: 2 }}
                     />
 
@@ -209,7 +184,7 @@ const Navbar: React.FC<NavbarProps> = ({
                             <View className="flex-row items-center justify-between">
                                 <View className="flex-row items-center flex-1">
                                     <Image
-                                        source={require('../assets/images/logowihara2.png')}
+                                        source={require('../assets/images/logowihara.png')}
                                         style={{ width: 73, height: 42, marginLeft: 8, top: 2 }}
                                     />
                                 </View>
@@ -217,7 +192,7 @@ const Navbar: React.FC<NavbarProps> = ({
                                     onPress={() => setIsMobileMenuOpen(false)}
                                     className="p-2 bg-yellow-100 rounded-full"
                                 >
-                                    <FontAwesome5 name="times" size={20} color="#b37712" />
+                                    <FontAwesome5 name="times" size={20} color="#854d0e" />
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -226,8 +201,6 @@ const Navbar: React.FC<NavbarProps> = ({
                             {navItems.map((item) => {
                                 const colors = getItemColors(item.id, item.color);
                                 const isActive = activeSection === item.id;
-                                // Cek apakah grup ini sedang expanded
-                                const isExpanded = expandedGroups[item.id] || false;
                                 
                                 return (
                                     <View key={item.id}>
@@ -264,7 +237,7 @@ const Navbar: React.FC<NavbarProps> = ({
                                             
                                             {item.isGroup ? (
                                                 <FontAwesome5
-                                                    name={isExpanded ? 'chevron-up' : 'chevron-down'}
+                                                    name={isPujaExpanded ? 'chevron-up' : 'chevron-down'}
                                                     size={16}
                                                     color={colors.icon}
                                                 />
@@ -279,7 +252,7 @@ const Navbar: React.FC<NavbarProps> = ({
                                             )}
                                         </TouchableOpacity>
 
-                                        {item.isGroup && isExpanded && (
+                                        {item.isGroup && isPujaExpanded && (
                                             <View className="ml-4 mr-2 mb-2">
                                                 {item.submenu?.map((subitem) => {
                                                     const isSubActive = activeSection === subitem.id;
@@ -322,6 +295,18 @@ const Navbar: React.FC<NavbarProps> = ({
                             <View style={{ height: 120 }} />
                         </ScrollView>
 
+                        <View className="absolute bottom-8 left-0 right-0 px-4">
+                            <View className="bg-gradient-to-r from-yellow-100 to-orange-100 rounded-xl p-4 border-2 border-yellow-300">
+                                <View className="flex-row items-center justify-center mb-2">
+                                    <Text className="text-yellow-800 font-bold text-sm ml-2">
+                                        Menu Navigasi
+                                    </Text>
+                                </View>
+                                <Text className="text-yellow-700 text-xs text-center leading-4">
+                                    Pilih menu untuk berpindah halaman
+                                </Text>
+                            </View>
+                        </View>
                     </Animated.View>
                 </View>
             </Modal>
